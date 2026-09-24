@@ -1,0 +1,73 @@
+name: Sync Harvard ToolUniverse skills
+
+on:
+  schedule:
+    - cron: "41 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-harvard-tooluniverse-skills
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Fetch upstream catalog
+        id: upstream
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_dir="$RUNNER_TEMP/tooluniverse"
+          git clone --depth=1 --filter=blob:none --sparse https://github.com/mims-harvard/ToolUniverse.git "$source_dir"
+          git -C "$source_dir" sparse-checkout set skills
+          source_sha="$(git -C "$source_dir" rev-parse HEAD)"
+          echo "source_sha=$source_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Open a review pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_SHA: ${{ steps.upstream.outputs.source_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="${{ github.event.repository.default_branch }}"
+          branch="automation/tooluniverse-sync-${SOURCE_SHA:0:12}"
+
+          open_sync_prs="$(gh pr list --state open --limit 100 --base "$base" --json headRefName --jq '[.[] | select(.headRefName | startswith("automation/tooluniverse-sync-"))] | length')"
+          if [[ "$open_sync_prs" != "0" ]]; then
+            echo "An upstream catalog review PR is already open; leaving this update for the next scheduled run."
+            exit 0
+          fi
+
+          git fetch origin "$base:refs/remotes/origin/$base"
+          git checkout --detach "origin/$base"
+          python3 scripts/sync_tooluniverse_catalog.py "$RUNNER_TEMP/tooluniverse" "$GITHUB_WORKSPACE" "$SOURCE_SHA"
+          git add skills/ upstreams/harvard-tooluniverse/ third-party-licenses/harvard-tooluniverse-LICENSE.txt
+          if git diff --cached --quiet; then
+            echo "The mirrored catalog already matches upstream."
+            exit 0
+          fi
+
+          if git ls-remote --exit-code --heads origin "refs/heads/$branch" >/dev/null 2>&1; then
+            echo "The source-revision branch already exists. Review it before retrying: $branch" >&2
+            exit 1
+          fi
+
+          git checkout -b "$branch"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: sync Harvard ToolUniverse skills"
+          git push origin "$branch"
+          gh pr create \
+            --base "$base" \
+            --head "$branch" \
+            --title "chore: sync Harvard ToolUniverse skills" \
+            --body "Updates the mirrored scientific skills catalog from [MIMS-Harvard ToolUniverse](https://github.com/mims-harvard/ToolUniverse/tree/$SOURCE_SHA/skills). Review the changes before merging. Upstream skill removals stop the sync for manual review; this workflow does not delete skills, force-push, or merge automatically."

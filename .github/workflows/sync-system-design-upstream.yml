@@ -1,0 +1,86 @@
+name: Sync upstream system-design skill
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-system-design-upstream
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Fetch and validate upstream skill
+        id: upstream
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          target="skills/system-design/SKILL.md"
+          source="https://raw.githubusercontent.com/anthropics/knowledge-work-plugins/main/engineering/skills/system-design/SKILL.md"
+          upstream_file="$(mktemp)"
+          trap 'rm -f "$upstream_file"' EXIT
+
+          curl --fail --silent --show-error --location --retry 3 "$source" --output "$upstream_file"
+          grep --fixed-strings --line-regexp --quiet 'name: system-design' "$upstream_file"
+          grep --fixed-strings --line-regexp --quiet '# System Design' "$upstream_file"
+          cp "$upstream_file" "$RUNNER_TEMP/system-design-upstream.md"
+
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+
+      - name: Open or update an upstream sync pull request
+        if: steps.upstream.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          branch="automation/sync-system-design-upstream"
+          base="${{ github.event.repository.default_branch }}"
+          target="skills/system-design/SKILL.md"
+          source_file="$RUNNER_TEMP/system-design-upstream.md"
+
+          git fetch origin "$base:refs/remotes/origin/$base"
+          git checkout --force --detach "origin/$base"
+          git checkout -B "$branch"
+          cp "$source_file" "$target"
+          git add "$target"
+
+          existing_pr="$(gh pr list --state open --head "$branch" --json number --jq '.[0].number // empty')"
+          if git diff --cached --quiet; then
+            if [[ -n "$existing_pr" ]]; then
+              gh pr close "$existing_pr" --comment "The upstream skill now matches the default branch."
+            fi
+            echo "No upstream skill changes."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: sync upstream system-design skill"
+
+          remote_sha="$(git ls-remote origin "refs/heads/$branch" | cut -f1)"
+          if [[ -n "$remote_sha" ]]; then
+            git push --force-with-lease="refs/heads/$branch:$remote_sha" origin "$branch"
+          else
+            git push origin "$branch"
+          fi
+
+          if [[ -z "$existing_pr" ]]; then
+            gh pr create \
+              --base "$base" \
+              --head "$branch" \
+              --title "chore: sync upstream system-design skill" \
+              --body "Updates `skills/system-design/SKILL.md` from [Anthropic's upstream skill](https://github.com/anthropics/knowledge-work-plugins/blob/main/engineering/skills/system-design/SKILL.md). Review the upstream changes before merging."
+          fi
