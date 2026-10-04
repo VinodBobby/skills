@@ -25,6 +25,7 @@ Use [the skill template](templates/skill/SKILL.md) as a starting point. Keep eac
 - [Code Review](skills/code-review/SKILL.md): review TypeScript, JavaScript, Python, and Rust changes for actionable defects against the request and repository conventions.
 - [Equity Research](skills/equity-research/SKILL.md): scan public stocks and investigate companies with sourced facts and explicit assumptions.
 - [News Research](skills/news-research/SKILL.md): investigate events and claims, trace reports to evidence, and build cited timelines.
+- [Stanford STORM](skills/stanford-storm/SKILL.md): research topics through multiple perspectives, source-grounded questions, a synthesized outline, and citation-aware writing.
 - [Harvard ToolUniverse science skills](docs/harvard-tooluniverse.md): upstream-synced catalog of scientific research workflows.
 - [GitHub](skills/github/SKILL.md): route general repository, issue, and pull request work to focused workflows.
 - [PR review follow-up](skills/gh-address-comments/SKILL.md): inspect and address review feedback.
