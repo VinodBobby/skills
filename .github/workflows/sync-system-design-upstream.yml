@@ -82,5 +82,5 @@ jobs:
               --base "$base" \
               --head "$branch" \
               --title "chore: sync upstream system-design skill" \
-              --body "Updates `skills/system-design/SKILL.md` from [Anthropic's upstream skill](https://github.com/anthropics/knowledge-work-plugins/blob/main/engineering/skills/system-design/SKILL.md). Review the upstream changes before merging."
+              --body "Updates skills/system-design/SKILL.md from [Anthropic's upstream skill](https://github.com/anthropics/knowledge-work-plugins/blob/main/engineering/skills/system-design/SKILL.md). Review the upstream changes before merging."
           fi
