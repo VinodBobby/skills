@@ -8,6 +8,7 @@ description: Design systems, services, and architectures. Trigger with "design a
 Help design systems and evaluate architectural decisions.
 
 ## Framework
+
 ### 1. Requirements Gathering
 - Functional requirements (what it does)
 - Non-functional requirements (scale, latency, availability, cost)
@@ -25,6 +26,7 @@ Help design systems and evaluate architectural decisions.
 - Caching strategy
 - Queue/event design
 - Error handling and retry logic
+
 ### 4. Scale and Reliability
 - Load estimation
 - Horizontal vs. vertical scaling
