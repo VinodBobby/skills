@@ -21,8 +21,10 @@ Use [the skill template](templates/skill/SKILL.md) as a starting point. Keep eac
 - [Document Editing](skills/document-editing/SKILL.md): revise reports and office documents while preserving meaning and structure.
 - [PDF Workflow](skills/pdf-workflow/SKILL.md): inspect, create, and make authorized edits to PDFs with page-level checks.
 - [System Design](skills/system-design/SKILL.md): design systems and evaluate architectural decisions. Synced from [Anthropic's upstream skill](skills/system-design/UPSTREAM.md).
+- [Service Performance Architecture](skills/service-performance-architecture/SKILL.md): design responsive backend services with measured bottlenecks, bounded I/O, and cache-safe request paths.
 - [ML/AI Architecture](skills/ml-ai-architecture/SKILL.md): design ML/AI systems, including model lifecycle, RAG, graph/vector retrieval, and image/video pipelines.
 - [Code Review](skills/code-review/SKILL.md): review TypeScript, JavaScript, Python, and Rust changes for actionable defects against the request and repository conventions.
+- [Media Platforms Code Review](skills/media-platforms-code-review/SKILL.md): apply Ads Analytics and Voltron review anchors, including FRE integration contracts.
 - [Equity Research](skills/equity-research/SKILL.md): scan public stocks and investigate companies with sourced facts and explicit assumptions.
 - [News Research](skills/news-research/SKILL.md): investigate events and claims, trace reports to evidence, and build cited timelines.
 - [Stanford STORM](skills/stanford-storm/SKILL.md): research topics through multiple perspectives, source-grounded questions, a synthesized outline, and citation-aware writing.
