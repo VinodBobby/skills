@@ -1,6 +1,6 @@
 ---
 name: equity-research
-description: Screen public companies and investigate individual stocks using current, sourced financial facts, comparable metrics, and explicit valuation assumptions. Use for stock scans, company comparisons, and equity due diligence.
+description: Screen public companies and investigate individual stocks using current, sourced financial facts, comparable metrics, and explicit valuation assumptions. Use for company comparisons and equity due diligence; use Stock Scanner Analyst for scanner-driven entry/exit plans.
 ---
 
 # Purpose
@@ -34,6 +34,8 @@ Compare valuation with relevant peers and the company's history. Use a discounte
 Give a concise comparison table and a sourced deep dive for the requested finalists. Distinguish verified facts from estimates and interpretation. Include the strongest counterevidence, unresolved questions, and what new fact could change the conclusion. State the data date and source coverage.
 
 Keep analysis separate from a trading decision. Do not present a screen, valuation, or forecast as a guaranteed outcome or personalized recommendation.
+
+When a user asks to turn scanner candidates into entry/exit levels or scenario-based risk/reward, use the companion [Stock Scanner Analyst](../stock-scanner-analyst/SKILL.md). It covers conditional trade setups; this skill remains the source for fundamental company analysis.
 
 # Requirements
 
