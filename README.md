@@ -22,6 +22,7 @@ Use [the skill template](templates/skill/SKILL.md) as a starting point. Keep eac
 - [PDF Workflow](skills/pdf-workflow/SKILL.md): inspect, create, and make authorized edits to PDFs with page-level checks.
 - [System Design](skills/system-design/SKILL.md): design systems and evaluate architectural decisions. Synced from [Anthropic's upstream skill](skills/system-design/UPSTREAM.md).
 - [Service Performance Architecture](skills/service-performance-architecture/SKILL.md): design responsive backend services with measured bottlenecks, bounded I/O, and cache-safe request paths.
+- [Agentic Software Workflow](skills/agentic-software-workflow/SKILL.md): plan agent-assisted delivery, reduce coding-agent bottlenecks, and bootstrap agent-ready repositories.
 - [ML/AI Architecture](skills/ml-ai-architecture/SKILL.md): design ML/AI systems, including model lifecycle, RAG, graph/vector retrieval, and image/video pipelines.
 - [Code Review](skills/code-review/SKILL.md): review TypeScript, JavaScript, Python, and Rust changes for actionable defects against the request and repository conventions.
 - [Media Platforms Code Review](skills/media-platforms-code-review/SKILL.md): apply Ads Analytics and Voltron review anchors, including FRE integration contracts.
