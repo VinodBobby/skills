@@ -1,10 +1,8 @@
 ---
 name: devtu-self-evolve
 description: >
-  Orchestrate the full ToolUniverse self-improvement cycle: discover APIs, create tools,
-  test with researcher personas, fix issues, optimize skills, and push via git. References
-  and dispatches to all other devtu skills. Use when asked to: run the self-improvement loop,
-  do a debug/test round, expand tool coverage, improve tool quality, or evolve ToolUniverse.
+  Orchestrate ToolUniverse discovery, tool testing, fixes, and skill improvement. Use for
+  debug rounds, tool coverage, or quality work. Publishing requires a separate explicit request.
 ---
 
 # ToolUniverse Self-Evolution Orchestrator
@@ -14,7 +12,7 @@ Coordinates the full development lifecycle by dispatching to specialized devtu s
 ## The Cycle
 
 ```
-Discover → Create → Test → Fix → Optimize → Ship → Repeat
+Discover → Create → Test → Fix → Optimize → Report
 ```
 
 Each phase maps to a dedicated skill:
@@ -28,7 +26,7 @@ Each phase maps to a dedicated skill:
 | **Optimize** | `devtu-optimize-skills` | Improve skill reports, evidence handling, UX |
 | **Optimize** | `devtu-optimize-descriptions` | Improve tool JSON descriptions for clarity |
 | **Docs** | `devtu-docs-quality` | Validate documentation accuracy |
-| **Ship** | `devtu-github` | Branch, commit, push, create PR |
+| **Publish (explicit request only)** | `devtu-github` | Commit, push, or create a PR when the user asks |
 
 ## Quick Start
 
@@ -39,7 +37,7 @@ Pick an entry point based on what's needed:
 - **"Create a new tool"** → invoke `Skill(skill="devtu-create-tool")`
 - **"Fix a broken tool"** → invoke `Skill(skill="devtu-fix-tool")`
 - **"Improve skills"** → invoke `Skill(skill="devtu-optimize-skills")`
-- **"Full cycle"** → follow all phases below in order
+- **"Full cycle"** → follow the development phases below and report results; publishing needs a separate explicit request
 
 ---
 
@@ -152,15 +150,15 @@ python skills/devtu-benchmark-harness/scripts/generate_report.py --results <resu
 
 Compare with previous round. If any category regresses, prioritize fixing that skill/tool in Phase 4.
 
-## Phase 4: Fix & Commit
+## Phase 4: Fix & Validate
 
 1. Implement verified fixes (see [references/bug-patterns.md](references/bug-patterns.md) for code-level patterns)
 2. **Run code-simplifier**: `Skill(skill="simplify")` — always after writing or modifying code
 3. Lint: `ruff check src/tooluniverse/<file>.py`
 4. Verify syntax: `python -c "from tooluniverse.<module> import <Class>"`
 5. Test: `python -m tooluniverse.cli run <Tool> '<json>'`
-6. Pre-commit hook pattern: stage → commit (fails, reformats) → re-stage → commit
-7. Push: `git push origin <branch>`
+6. Keep changes local and report the changed files and validation results.
+7. Do not stage, commit, push, or open a PR unless the user explicitly requests that action.
 
 > Also see `Skill(skill="devtu-code-optimization")` for reusable fix patterns and anti-patterns.
 
@@ -171,13 +169,9 @@ After fixes are stable:
 - `Skill(skill="devtu-optimize-skills")` — improve research skill quality
 - `Skill(skill="devtu-docs-quality")` — validate docs accuracy
 
-## Phase 6: Ship
+## Phase 6: Publish (only on explicit request)
 
-Invoke `Skill(skill="devtu-github")` or manually:
-1. Rebase: `git fetch origin && git stash && git rebase origin/main && git stash pop`
-2. `git push --force-with-lease origin <branch>`
-3. Create or update PR: `gh pr create` / verify with `gh pr view <N> --json mergeable`
-4. Verify `"mergeable": "MERGEABLE"` before reporting done
+Do not enter this phase unless the user explicitly asks to commit, push, or open/update a pull request. Perform only the requested action. Use `devtu-github` for the authorized publishing steps. Do not force-push or rewrite remote history without separate explicit approval.
 
 **GitHub repo**: `mims-harvard/ToolUniverse` — always verify with `git remote -v` before pushing.
 
@@ -186,6 +180,7 @@ Invoke `Skill(skill="devtu-github")` or manually:
 ## Git Rules (CRITICAL)
 
 - **NEVER push to main** — all work on feature branches
+- **NEVER commit, push, or open a PR without an explicit user request**
 - **NEVER have multiple open fix PRs** — keep adding to current branch
 - **Always rebase before push**: `git fetch origin && git rebase origin/main`
 - **Commit message format**: no "BUG" terminology, use "Feature" or "Fix"

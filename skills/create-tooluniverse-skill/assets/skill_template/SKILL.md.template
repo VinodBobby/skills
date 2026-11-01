@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-[domain-name]
-description: [Complete description of what the skill does, which databases it uses, and when to use it. Include specific trigger phrases like "analyze [domain]", "find [data type]", etc. This description is the primary way Claude determines when to use your skill.]
+description: '[Complete description of what the skill does, which databases it uses, and when to use it. Include specific trigger phrases like "analyze [domain]", "find [data type]", etc. This description is the primary way Claude determines when to use your skill.]'
 ---
 
 # [Domain Name] Analysis

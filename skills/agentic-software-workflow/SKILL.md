@@ -23,6 +23,8 @@ Use this skill when coding agents are a significant part of software delivery. P
 7. Verify at multiple levels that fit the task: focused tests during work, integration or end-to-end acceptance for the workflow, and the repository's full required checks before handoff. For visual products, inspect the rendered result and test interactions, not just code or screenshots.
 8. Keep the tree in a clean, buildable state at handoff. Report what passed, what remains, and any limit in the evidence.
 
+For work that spans sessions, follow the [session-continuity](../session-continuity/SKILL.md) skill.
+
 ## Measure the workflow
 
 For an initial pilot, record enough to compare agent-assisted work with the existing baseline:

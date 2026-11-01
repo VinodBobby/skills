@@ -2,7 +2,7 @@ name: Sync upstream system-design skill
 
 on:
   schedule:
-    - cron: "17 */6 * * *"
+    - cron: "17 7 * * *"
   workflow_dispatch:
 
 permissions:

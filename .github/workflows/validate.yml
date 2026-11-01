@@ -1,0 +1,41 @@
+name: Validate skills
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Validate skill packages
+        run: |
+          python3 -m pip install --quiet pyyaml
+          python3 scripts/validate_skills.py
+
+      - name: Check upstream overrides are applied
+        run: |
+          for dir in upstreams/*/; do
+            [[ -f "$dir/source.json" ]] && python3 scripts/sync_upstream.py apply-overrides "$(basename "$dir")"
+          done
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
+
+      - name: Lint installer
+        run: shellcheck install.sh
+
+      - name: Exercise installer in a scratch home
+        run: |
+          export HOME="$RUNNER_TEMP/home"
+          ./install.sh
+          ./install.sh
+          ./install.sh --all
+          ./install.sh --uninstall
+          test -z "$(find "$HOME/.agents/skills" "$HOME/.claude/skills" -mindepth 1 -maxdepth 1)"

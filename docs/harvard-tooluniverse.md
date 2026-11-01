@@ -10,6 +10,8 @@ The upstream project is licensed under Apache-2.0. Its license is preserved at [
 
 ## Upstream maintenance
 
-The [sync workflow](../.github/workflows/sync-harvard-tooluniverse-skills.yml) checks upstream every six hours and can also run manually. It opens a review pull request and never merges automatically. If a sync pull request is already open, later runs wait. It does not force-push or delete skills. If upstream removes a skill, the workflow stops so a maintainer can review that removal. Review each update before merging. Avoid editing mirrored skill directories directly; submit changes upstream or place local guidance in a separate skill.
+The catalog syncs daily through a review pull request; see [upstream catalog maintenance](upstream-catalogs.md). Do not edit mirrored skill directories directly. Local fixes live in [upstreams/harvard-tooluniverse](../upstreams/harvard-tooluniverse/README.md) and are re-applied after each sync.
 
-Upstream SKILL.md files may include host-specific frontmatter extensions. Agents can ignore unknown fields, so host-specific invocation and path hints may work differently between clients. The `tooluniverse` router also uses host-specific skill-calling syntax. Check it on each target agent or add a small adapter where needed. The mirror preserves upstream content and applies one documented YAML formatting normalization to three descriptions that strict parsers otherwise reject.
+Upstream SKILL.md files may include host-specific frontmatter extensions such as `disable-model-invocation`, `paths`, `triggers`, or `when_to_use`. Hosts that do not support a field ignore it, so treat these as discovery hints, not access controls. The `tooluniverse` router also uses host-specific skill-calling syntax.
+
+The catalog is not installed by default. Run `./install.sh --with-science` to add it.

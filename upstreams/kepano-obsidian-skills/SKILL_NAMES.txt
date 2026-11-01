@@ -1,0 +1,6 @@
+defuddle
+json-canvas
+knap
+obsidian-bases
+obsidian-cli
+obsidian-markdown
