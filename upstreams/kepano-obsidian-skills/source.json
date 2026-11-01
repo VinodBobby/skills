@@ -1,0 +1,7 @@
+{
+  "repository": "https://github.com/kepano/obsidian-skills",
+  "skills_path": "skills",
+  "license": "LICENSE",
+  "license_target": "third-party-licenses/kepano-obsidian-skills-LICENSE.txt",
+  "install_profile": "default"
+}

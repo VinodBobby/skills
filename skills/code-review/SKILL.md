@@ -15,7 +15,9 @@ Use the base revision, branch, pull request, or files named by the user. If the 
 
 ## Trace changed behavior
 
-Inspect the full diff and enough surrounding code to follow inputs, callers, outputs, and failure paths. Check whether the implementation matches the request and preserves existing behavior. Inspect relevant tests and project configuration when they clarify expected behavior. Focus on issues the change introduces; skip unrelated pre-existing problems.
+Inspect the full diff and enough surrounding code to follow inputs, callers, outputs, and failure paths. Check whether the implementation preserves existing behavior.
+
+When an originating issue, ticket, or specification is available, compare the change with it: requirements that are missing or only partly met, behavior that was not requested, and acceptance criteria without a matching test. Report spec gaps as findings with the requirement quoted; skip this check when no spec exists. Inspect relevant tests and project configuration when they clarify expected behavior. Focus on issues the change introduces; skip unrelated pre-existing problems.
 
 Apply language-specific checks where they matter:
 

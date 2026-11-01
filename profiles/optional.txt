@@ -1,0 +1,5 @@
+# First-party skills excluded from the default install; add with ./install.sh --with-optional.
+# These overlap with host-provided skills (the Figma plugin, document skills) where those are installed.
+document-editing
+figma-design
+pdf-workflow

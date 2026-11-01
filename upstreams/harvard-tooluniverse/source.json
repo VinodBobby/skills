@@ -1,0 +1,7 @@
+{
+  "repository": "https://github.com/mims-harvard/ToolUniverse",
+  "skills_path": "skills",
+  "license": "LICENSE",
+  "license_target": "third-party-licenses/harvard-tooluniverse-LICENSE.txt",
+  "install_profile": "science"
+}

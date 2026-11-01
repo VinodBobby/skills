@@ -80,8 +80,8 @@ Validate at two levels:
 
 Use each host's official validator where available. A format validator checks structure; it does not establish that the workflow is useful or portable in practice.
 
-## Initial scope
+## Current tooling
 
-The repository now includes a first example skill: [Product UI](../skills/product-ui/SKILL.md). It exercises the shared package convention with a host-neutral workflow and a focused quality checklist.
-
-Add automated validation and host adapters after selecting target hosts and trying the skill on a representative task.
+- **Package checks:** [scripts/validate_skills.py](../scripts/validate_skills.py) checks frontmatter, names, the 1,024-character description limit, one manifest per package, relative links, and that the README lists every first-party skill. CI runs it on every pull request.
+- **Host adapters:** [install.sh](../install.sh) links skills into `~/.agents/skills` and `~/.claude/skills`, which Codex, Claude Code, and Cursor discover. Explicit-only skills set `disable-model-invocation: true` (Claude Code, Cursor) and `policy.allow_implicit_invocation: false` in `agents/openai.yaml` (Codex).
+- **Context budget:** every skill that can be invoked implicitly adds its name and description to each session. Keep descriptions short, mark rarely needed skills explicit-only, and keep repository-specific skills in that repository's own skill directory.

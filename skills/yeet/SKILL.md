@@ -1,6 +1,7 @@
 ---
 name: yeet
 description: Publish local changes to GitHub by preparing a branch, committing the intended changes, pushing, and opening a pull request. Use only when the user explicitly requests this publishing workflow.
+disable-model-invocation: true
 ---
 
 # Publish Changes to GitHub
@@ -17,12 +18,12 @@ Use this workflow only when the user explicitly asks to publish changes, such as
 
 1. Inspect `git status -sb`, the current branch, remotes, and the diff.
 2. If unrelated or unexplained changes are present, ask which files belong in the requested publication. Do not stage them by default.
-3. If on the default branch, create a descriptive `codex/<description>` branch. Otherwise use the current branch unless the user specified another branch.
-4. Stage only the intended files and review the staged diff.
-5. Commit with a concise message that describes the change.
-6. Run relevant checks when requested or when needed to validate the change; report any checks not run.
+3. If on the default branch, create a branch named by the [git-workflow](../git-workflow/SKILL.md) conventions. Otherwise use the current branch unless the user specified another branch.
+4. Run the repository's lint and format checks on the changed scope and fix what they report; report any checks not run.
+5. Stage only the intended files and review the staged diff.
+6. Commit with a concise message that describes the change.
 7. Push the branch with upstream tracking.
-8. Open a draft PR through an available GitHub integration or `gh pr create --draft`. Use the repository's default branch unless the user specified a base branch.
+8. Open a draft PR following the [pull-request](../pull-request/SKILL.md) skill. Use the repository's default branch unless the user specified a base branch.
 9. Summarize the branch, commit, PR, and validation results.
 
 ## Write boundaries

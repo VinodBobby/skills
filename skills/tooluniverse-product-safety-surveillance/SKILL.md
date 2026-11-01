@@ -1,23 +1,6 @@
 ---
 name: tooluniverse-product-safety-surveillance
-description: >-
-  Post-market safety surveillance and recall/adverse-event RETRIEVAL across the
-  full spectrum of FDA-regulated products that are NOT covered by the drug-AE
-  signal skills: medical devices, food / dietary supplements / cosmetics,
-  veterinary drugs, and drug supply (shortages). Orchestrates openFDA endpoints
-  (MAUDE device adverse events + device recalls + 510(k), CAERS food/supplement/
-  cosmetic adverse events, veterinary adverse events, drug shortages, and
-  cross-product enforcement/recall reports). USE WHEN the user asks: "are there
-  adverse events for [device / pacemaker / infusion pump / insulin pump]",
-  "device recalls for [firm/product]", "supplement / vitamin / cosmetic adverse
-  reactions", "is [drug] in shortage", "what injectables are on shortage",
-  "veterinary / animal adverse events for [drug] in [dog/cat/horse]", "food
-  recall for listeria", "MAUDE report for [device]", "CAERS reactions for [brand]".
-  DO NOT USE for drug adverse-event SIGNAL detection or disproportionality
-  (PRR / ROR / IC) or drug-AE association scoring — that is
-  `tooluniverse-pharmacovigilance` / `tooluniverse-adverse-event-detection`.
-  This skill is multi-product surveillance and retrieval, not drug-AE
-  statistical signal mining.
+description: "Retrieve post-market safety data for FDA-regulated products outside drug adverse-event signal detection: medical device adverse events (MAUDE), device recalls and 510(k), food, supplement, and cosmetic adverse events (CAERS), veterinary adverse events, drug shortages, and enforcement reports through openFDA. Use for questions like \"recalls for this infusion pump\" or \"is this drug in shortage\". Not for drug adverse-event disproportionality (PRR, ROR, IC); use tooluniverse-pharmacovigilance or tooluniverse-adverse-event-detection."
 disable-model-invocation: true
 ---
 
