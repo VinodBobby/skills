@@ -35,7 +35,9 @@ backup() {
   run mv "$path" "$BACKUP/$rel"
 }
 
-names_in() { [[ -f "$1" ]] && grep -v '^#' "$1" | sed '/^[[:space:]]*$/d' || true; }
+names_in() {
+  if [[ -f "$1" ]]; then sed -e '/^#/d' -e '/^[[:space:]]*$/d' "$1"; fi
+}
 
 excluded() {
   local dir
