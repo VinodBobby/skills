@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-variant-analysis
-description: VCF and variant analysis — parsing, annotation, classification (synonymous, missense, frameshift, stop_gained), VAF filtering, coding vs non-coding categorization, multi-condition variant comparison. Use for VCF parsing, variant fraction calculations (denominator = coding subset only, NOT all variants), and per-sample mutation profiling.
+description: "Analyze VCFs and variants: parse and annotate records; classify effects; filter by VAF; compare conditions; convert and validate SPDI, HGVS, VCF, and rsID notation; look up ALFA frequencies and EVA study cohorts; retrieve curated LOVD variants and ClinGen Allele IDs; run GeneBe ACMG classification; select APPRIS principal transcripts; query Ensembl LD, liftover GRCh37/38 coordinates, map protein/cDNA to genomic coordinates, and inspect Ensembl IDs, cross-references, and overlaps. Use for VCF parsing, per-sample profiles, variant interpretation, notation conversion, cohort lookups, and GWAS fine-mapping."
 disable-model-invocation: true
 ---
 
