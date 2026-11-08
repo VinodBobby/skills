@@ -65,15 +65,20 @@ def sync(key: str, source_root: Path, source_commit: str) -> None:
     config = json.loads((config_dir / "source.json").read_text())
     source_skills = source_root / config["skills_path"]
     manifest = config_dir / "SKILL_NAMES.txt"
-    names = sorted(p.name for p in source_skills.iterdir() if p.is_dir() and (p / "SKILL.md").is_file())
+    source_names = sorted(p.name for p in source_skills.iterdir() if p.is_dir() and (p / "SKILL.md").is_file())
+    aliases = config.get("skill_name_aliases", {})
+    names_by_source = {source_name: aliases.get(source_name, source_name) for source_name in source_names}
+    names = sorted(names_by_source.values())
     if not names:
         raise ValueError(f"No skill folders found in {source_skills}")
+    if len(names) != len(set(names)):
+        raise ValueError("Skill name aliases produce duplicate local skill names")
 
-    for name in names:
-        skill_dir = source_skills / name
+    for source_name in source_names:
+        skill_dir = source_skills / source_name
         if any(p.is_symlink() for p in skill_dir.rglob("*")):
             raise ValueError(f"Symlink found in upstream skill: {skill_dir}")
-        if frontmatter_name(skill_dir / "SKILL.md") != name:
+        if frontmatter_name(skill_dir / "SKILL.md") != source_name:
             raise ValueError(f"Skill name does not match its folder: {skill_dir}")
 
     previous = read_manifest(manifest)
@@ -88,9 +93,12 @@ def sync(key: str, source_root: Path, source_commit: str) -> None:
     if collisions:
         raise ValueError("Upstream skill name collides with existing skill(s): " + ", ".join(collisions))
 
-    for name in names:
+    for source_name in source_names:
+        name = names_by_source[source_name]
         shutil.rmtree(SKILLS / name, ignore_errors=True)
-        shutil.copytree(source_skills / name, SKILLS / name)
+        shutil.copytree(source_skills / source_name, SKILLS / name)
+        if name != source_name:
+            set_field(SKILLS / name / "SKILL.md", "name", name)
 
     check_overlay_bases(key, source_skills)
 
@@ -211,6 +219,8 @@ def apply_overrides(key: str) -> None:
         return
     for override in json.loads(overrides_file.read_text()):
         skill_dir = SKILLS / override["skill"]
+        if override.get("optional") and not skill_dir.is_dir():
+            continue
         path = skill_dir / override.get("file", "SKILL.md")
         op = override["op"]
         if op == "set":

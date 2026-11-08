@@ -11,6 +11,10 @@ doesn't cover, or if you need a specialized data transformation that no existing
 Start with the JSON config approach (simplest — no Python needed); escalate to a Python class
 only if you need custom response parsing or stateful logic.
 
+## Description quality
+
+Keep tool and parameter descriptions concise and grounded in the schema and implementation. State what the tool does and returns, required inputs and formats, defaults, prerequisites, and important limits. Do not promise behavior the code does not provide. This guidance also applies when revising an existing tool description; a separate optimizer skill is not needed.
+
 Three ways to add tools — pick the one that fits your needs:
 
 | Approach | When to use |
