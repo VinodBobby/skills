@@ -51,6 +51,10 @@ Use [the skill template](templates/skill/SKILL.md) as a starting point. Keep eac
 - [Code Review](skills/code-review/SKILL.md): review TypeScript, JavaScript, Python, and Rust changes for actionable defects and spec gaps.
 - [Media Platforms Code Review](skills/media-platforms-code-review/SKILL.md): apply Ads Analytics and Voltron review anchors, including FRE integration contracts.
 - [Equity Research](skills/equity-research/SKILL.md): scan public stocks and investigate companies with sourced facts and explicit assumptions.
+- [Portfolio Strategy](skills/portfolio-strategy/SKILL.md): assess household risk, set portfolio policy and allocation targets, and coordinate a portfolio review.
+- [Investment Research](skills/investment-research/SKILL.md): compare investment vehicles and costs, and apply sourced investor-style profiles.
+- [Investment Tax Planning](skills/investment-tax-planning/SKILL.md): assess tax effects, loss harvesting, tax lots, and asset location.
+- [Portfolio Maintenance](skills/portfolio-maintenance/SKILL.md): review drift, rebalancing, dividends, cash, and fees.
 - [Stock Scanner Analyst](skills/stock-scanner-analyst/SKILL.md): turn scanner results into ranked candidates and conditional entry/exit plans with explicit risk scenarios.
 - [News Research](skills/news-research/SKILL.md): investigate events and claims, trace reports to evidence, and build cited timelines.
 - [Stanford STORM](skills/stanford-storm/SKILL.md): research topics through multiple perspectives, source-grounded questions, a synthesized outline, and citation-aware writing.

@@ -37,6 +37,8 @@ Keep analysis separate from a trading decision. Do not present a screen, valuati
 
 When a user asks to turn scanner candidates into entry/exit levels or scenario-based risk/reward, use the companion [Stock Scanner Analyst](../stock-scanner-analyst/SKILL.md). It covers conditional trade setups; this skill remains the source for fundamental company analysis.
 
+For fund selection, fee comparisons, or investor-style profiles, use the investment-research skill when available.
+
 # Requirements
 
 Current screens require access to up-to-date market data and source documents. Use available search, browsing, financial-data, or user-provided tools. If live data is unavailable, analyze supplied data with its date clearly stated and identify what could not be verified; never invent prices, financials, estimates, or citations.
