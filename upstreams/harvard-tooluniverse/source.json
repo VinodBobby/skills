@@ -3,5 +3,15 @@
   "skills_path": "skills",
   "license": "LICENSE",
   "license_target": "third-party-licenses/harvard-tooluniverse-LICENSE.txt",
-  "install_profile": "science"
+  "install_profile": "science",
+  "skill_name_aliases": {
+    "setup-af3_jax-remote-tool": "setup-af3-jax-remote-tool",
+    "setup-af3_torch-remote-tool": "setup-af3-torch-remote-tool",
+    "setup-borzoi_calico-remote-tool": "setup-borzoi-calico-remote-tool",
+    "setup-enformer_deepmind-remote-tool": "setup-enformer-deepmind-remote-tool",
+    "setup-esm_if1-remote-tool": "setup-esm-if1-remote-tool",
+    "setup-openfold3_ob0-remote-tool": "setup-openfold3-ob0-remote-tool",
+    "setup-protenix_v1-remote-tool": "setup-protenix-v1-remote-tool",
+    "setup-rfd4_proteina-remote-tool": "setup-rfd4-proteina-remote-tool"
+  }
 }

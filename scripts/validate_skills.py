@@ -22,10 +22,11 @@ MAX_DESCRIPTION = 1024
 MAX_BODY_LINES = 500
 
 
-def upstream_names() -> set[str]:
+def catalog_names() -> set[str]:
     names: set[str] = set()
-    for manifest in (REPO / "upstreams").glob("*/SKILL_NAMES.txt"):
-        names |= {line.strip() for line in manifest.read_text().splitlines() if line.strip()}
+    for pattern in ("*/SKILL_NAMES.txt", "*/LOCAL_SKILLS.txt"):
+        for manifest in (REPO / "upstreams").glob(pattern):
+            names |= {line.strip() for line in manifest.read_text().splitlines() if line.strip()}
     return names
 
 
@@ -56,7 +57,7 @@ def broken_links(md: Path, skill_dir: Path) -> list[str]:
 def validate() -> int:
     errors: list[str] = []
     warnings: list[str] = []
-    upstream = upstream_names()
+    catalog = catalog_names()
     first_party: list[str] = []
 
     for skill_dir in sorted(p for p in SKILLS.iterdir() if p.is_dir()):
@@ -66,7 +67,7 @@ def validate() -> int:
         if not skill_md.is_file():
             errors.append(f"{where}: missing SKILL.md")
             continue
-        if name not in upstream:
+        if name not in catalog:
             first_party.append(name)
 
         try:

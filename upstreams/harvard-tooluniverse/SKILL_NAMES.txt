@@ -1,14 +1,5 @@
 create-tooluniverse-skill
-devtu-auto-discover-apis
 devtu-benchmark-harness
-devtu-code-optimization
-devtu-create-tool
-devtu-docs-quality
-devtu-fix-tool
-devtu-github
-devtu-optimize-descriptions
-devtu-optimize-skills
-devtu-self-evolve
 host-and-share-remote-tool
 setup-boltz-remote-tool
 setup-borzoi-remote-tool

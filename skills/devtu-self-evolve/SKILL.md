@@ -19,13 +19,13 @@ Each phase maps to a dedicated skill:
 
 | Phase | Skill | What it does |
 |-------|-------|-------------|
-| **Discover** | `devtu-auto-discover-apis` | Gap analysis, web search for APIs, batch discovery |
+| **Discover** | `research` | Research coverage gaps and compare candidate APIs |
 | **Create** | `devtu-create-tool` | Build tool class + JSON config + test examples |
 | **Test** | *(this skill)* | Launch researcher persona agents to find issues |
 | **Fix** | `devtu-fix-tool` | Diagnose failures, implement fixes, validate |
 | **Optimize** | `devtu-optimize-skills` | Improve skill reports, evidence handling, UX |
-| **Optimize** | `devtu-optimize-descriptions` | Improve tool JSON descriptions for clarity |
-| **Docs** | `devtu-docs-quality` | Validate documentation accuracy |
+| **Tool descriptions** | `tooluniverse-custom-tool` | Write or revise descriptions against the tool schema and behavior |
+| **Docs** | `tooluniverse-self-review` plus repository checks | Review documentation and run relevant validators |
 | **Publish (explicit request only)** | `devtu-github` | Commit, push, or create a PR when the user asks |
 
 ## Quick Start
@@ -33,7 +33,7 @@ Each phase maps to a dedicated skill:
 Pick an entry point based on what's needed:
 
 - **"Run a test round"** → jump to [Testing Phase](#testing-phase)
-- **"Expand coverage"** → invoke `Skill(skill="devtu-auto-discover-apis")`
+- **"Expand coverage"** → invoke `Skill(skill="research")` to compare candidate APIs with current coverage
 - **"Create a new tool"** → invoke `Skill(skill="devtu-create-tool")`
 - **"Fix a broken tool"** → invoke `Skill(skill="devtu-fix-tool")`
 - **"Improve skills"** → invoke `Skill(skill="devtu-optimize-skills")`
@@ -43,10 +43,7 @@ Pick an entry point based on what's needed:
 
 ## Phase 1: Discovery (optional)
 
-Invoke `Skill(skill="devtu-auto-discover-apis")` to:
-1. Run gap analysis on current tool categories
-2. Search for life science APIs in underrepresented domains
-3. Score and prioritize APIs by coverage, reliability, documentation
+Use `Skill(skill="research")` to compare ToolUniverse coverage with authoritative API documentation. Report candidates with evidence about fit, access requirements, license, and maintenance. Do not create tools or publish changes during discovery.
 
 ## Phase 2: Tool Creation (optional)
 
@@ -165,9 +162,9 @@ Compare with previous round. If any category regresses, prioritize fixing that s
 ## Phase 5: Optimize (optional)
 
 After fixes are stable:
-- `Skill(skill="devtu-optimize-descriptions")` — improve tool descriptions
+- `Skill(skill="tooluniverse-custom-tool")` — revise tool descriptions against the actual schema and behavior
 - `Skill(skill="devtu-optimize-skills")` — improve research skill quality
-- `Skill(skill="devtu-docs-quality")` — validate docs accuracy
+- `Skill(skill="tooluniverse-self-review")` and the repository's documented checks — review documentation accuracy
 
 ## Phase 6: Publish (only on explicit request)
 

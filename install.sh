@@ -43,7 +43,10 @@ excluded() {
   local dir
   if ((with_science == 0)); then
     for dir in "$REPO"/upstreams/*/; do
-      grep -q '"install_profile": *"science"' "$dir/source.json" 2>/dev/null && names_in "$dir/SKILL_NAMES.txt"
+      if grep -q '"install_profile": *"science"' "$dir/source.json" 2>/dev/null; then
+        names_in "$dir/SKILL_NAMES.txt"
+        names_in "$dir/LOCAL_SKILLS.txt"
+      fi
     done
   fi
   if ((with_optional == 0)); then names_in "$REPO/profiles/optional.txt"; fi

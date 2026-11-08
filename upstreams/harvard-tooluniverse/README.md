@@ -1,10 +1,23 @@
 # Harvard ToolUniverse skills
 
-This directory tracks the upstream source revision, the mirrored skill names, and local fixes for the ToolUniverse catalog in the repository's top-level `skills/` directory.
+This directory tracks the upstream source revision, mirrored skill names, locally retained skills, and fixes for the ToolUniverse catalog in the repository's top-level `skills/` directory.
 
 - Upstream: [mims-harvard/ToolUniverse](https://github.com/mims-harvard/ToolUniverse)
 - License: [Apache-2.0](../../third-party-licenses/harvard-tooluniverse-LICENSE.txt)
 - Sync: [upstream catalog maintenance](../../docs/upstream-catalogs.md)
+
+`SKILL_NAMES.txt` lists skills currently mirrored from upstream. `LOCAL_SKILLS.txt` lists useful skills removed upstream that we keep for active local workflows. Both groups are installed only with `--with-science`. `source.json` maps eight upstream folder names that contain underscores to valid hyphenated local skill names.
+
+| Local-only skill | Reason to keep |
+| --- | --- |
+| `devtu-code-optimization` | Keeps ToolUniverse-specific debugging patterns used by `devtu-self-evolve`. |
+| `devtu-create-tool` | Active dependency of the tool-creation, benchmark, and self-evolution workflows. |
+| `devtu-fix-tool` | Active dependency of tool creation, benchmark triage, and self-evolution. |
+| `devtu-github` | Preserves the local explicit-action publishing policy and its OpenAI metadata override. |
+| `devtu-optimize-skills` | Active dependency of skill creation, benchmarking, and self-evolution. |
+| `devtu-self-evolve` | Local orchestrator with explicit publishing boundaries and local fixes. |
+
+Retired skills: `devtu-auto-discover-apis` (use `research` plus the existing ToolUniverse inventory), `devtu-docs-quality` (use the repository's documented checks and `tooluniverse-self-review`), and `devtu-optimize-descriptions` (use `tooluniverse-custom-tool`; no separate optimizer is needed).
 
 Local fixes, re-applied after every sync:
 
