@@ -13,7 +13,7 @@ Estimate and explain the tax effects of investment alternatives using the user's
 2. Compare the proposed action with no action and feasible alternatives. Estimate realized gains or losses and incremental tax effects with a suitable calculator or verifiable arithmetic. Separate the amount of a loss from an estimate of tax saved; state rates, timing, assumptions, and limits. Include portfolio exposure and transaction costs in the comparison.
 3. For loss harvesting, inspect relevant actual and planned purchases, automatic reinvestments, household and account activity, and replacement securities under current local rules. In the U.S., check applicable wash-sale rules across relevant accounts and related parties; flag uncertain substantially identical determinations for qualified review. Do not label a trade clear when required transaction data are missing.
 4. For asset location, compare household-wide exposures and account constraints, expected tax treatment, liquidity and withdrawal needs, and the cost of moving existing positions. Avoid treating account type or asset class alone as a universal placement rule.
-5. Return the proposed lots and accounts if supported, the effects and alternatives, cited current authority, data timestamps, confidence, and unresolved issues. Carry the run and snapshot identifiers forward when part of a coordinated review. Route material legal or personal tax uncertainty for qualified review.
+5. Return the proposed lots and accounts if supported, the effects and alternatives, cited current authority, data timestamps, confidence, and unresolved issues. In a portfolio-review run, return the handoff record from the brief. Route material legal or personal tax uncertainty for qualified review.
 
 ## Requirements
 

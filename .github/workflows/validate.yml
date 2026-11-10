@@ -34,8 +34,16 @@ jobs:
       - name: Exercise installer in a scratch home
         run: |
           export HOME="$RUNNER_TEMP/home"
+          mkdir -p "$HOME/.claude/skills/research" "$HOME/.agents/skills/machine-only"
           ./install.sh
           ./install.sh
+          test ! -L "$HOME/.claude/skills/research" && test -d "$HOME/.agents/skills/machine-only"
           ./install.sh --all
+          grep -qx -- --all "${XDG_CONFIG_HOME:-$HOME/.config}/portable-skills/install-flags"
+          ./install.sh --force
+          test -L "$HOME/.claude/skills/research" && test -L "$HOME/.agents/skills/document-editing"
+          ./install.sh --defaults
+          test ! -e "$HOME/.agents/skills/document-editing"
+          rmdir "$HOME/.agents/skills/machine-only"
           ./install.sh --uninstall
-          test -z "$(find "$HOME/.agents/skills" "$HOME/.claude/skills" -mindepth 1 -maxdepth 1)"
+          test -z "$(find "$HOME/.agents/skills" "$HOME/.claude/skills" "$HOME/.claude/agents" -mindepth 1 -maxdepth 1)"

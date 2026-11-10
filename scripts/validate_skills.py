@@ -14,12 +14,14 @@ import yaml
 
 REPO = Path(__file__).resolve().parent.parent
 SKILLS = REPO / "skills"
+AGENTS = REPO / "agents"
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 LINK_RE = re.compile(r"(?<!!)\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
 FENCE_RE = re.compile(r"^(```|~~~).*?^\1", re.MULTILINE | re.DOTALL)
 INLINE_CODE_RE = re.compile(r"`[^`\n]*`")
 MAX_DESCRIPTION = 1024
 MAX_BODY_LINES = 500
+READ_ONLY_TOOLS = {"Read", "Grep", "Glob", "WebFetch", "WebSearch"}
 
 
 def catalog_names() -> set[str]:
@@ -111,6 +113,40 @@ def validate() -> int:
         if not (SKILLS / listed / "SKILL.md").is_file():
             errors.append(f"README.md: lists missing skill {listed}")
 
+    agent_files = sorted(AGENTS.glob("*.md")) if AGENTS.is_dir() else []
+    for agent in agent_files:
+        where = agent.relative_to(REPO)
+        try:
+            meta, body = parse_frontmatter(agent)
+        except (ValueError, yaml.YAMLError) as error:
+            errors.append(f"{where}: {error}")
+            continue
+        if meta.get("name") != agent.stem:
+            errors.append(f"{where}: name {meta.get('name')!r} does not match file name")
+        if not isinstance(meta.get("description"), str) or not meta["description"].strip():
+            errors.append(f"{where}: description is missing")
+        if meta.get("readonly") is not True:
+            errors.append(f"{where}: readonly must be true (Cursor)")
+        tools = meta.get("tools") or []
+        if isinstance(tools, str):
+            tools = [t.strip() for t in tools.split(",") if t.strip()]
+        if not tools:
+            errors.append(f"{where}: tools allowlist is missing; Claude Code grants every tool without one")
+        elif extra := sorted(set(tools) - READ_ONLY_TOOLS):
+            errors.append(f"{where}: tools {', '.join(extra)} are not read-only")
+        declared = meta.get("skills") or []
+        if isinstance(declared, str):
+            declared = [s.strip() for s in declared.split(",") if s.strip()]
+        if not declared:
+            errors.append(f"{where}: declares no skills")
+        for skill in declared:
+            if not (SKILLS / skill / "SKILL.md").is_file():
+                errors.append(f"{where}: unknown skill {skill}")
+            elif f"/skills/{skill}/SKILL.md" not in body:
+                errors.append(f"{where}: body does not give the load path for skill {skill}")
+        if f"(agents/{agent.name})" not in readme:
+            errors.append(f"README.md: subagent {agent.stem} is not listed")
+
     optional = REPO / "profiles" / "optional.txt"
     if optional.is_file():
         for line in optional.read_text().splitlines():
@@ -121,7 +157,8 @@ def validate() -> int:
         print(f"warning: {message}")
     for message in errors:
         print(f"error: {message}")
-    print(f"Checked {sum(1 for p in SKILLS.iterdir() if p.is_dir())} skills: {len(errors)} errors, {len(warnings)} warnings.")
+    skill_count = sum(1 for p in SKILLS.iterdir() if p.is_dir())
+    print(f"Checked {skill_count} skills and {len(agent_files)} subagents: {len(errors)} errors, {len(warnings)} warnings.")
     return 1 if errors else 0
 
 

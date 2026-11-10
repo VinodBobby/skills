@@ -1,0 +1,5 @@
+interface:
+  display_name: "Portfolio Review"
+  short_description: "Run a staged multi-role portfolio review"
+policy:
+  allow_implicit_invocation: false

@@ -83,5 +83,5 @@ Use each host's official validator where available. A format validator checks st
 ## Current tooling
 
 - **Package checks:** [scripts/validate_skills.py](../scripts/validate_skills.py) checks frontmatter, names, the 1,024-character description limit, one manifest per package, relative links, and that the README lists every first-party skill. CI runs it on every pull request.
-- **Host adapters:** [install.sh](../install.sh) links skills into `~/.agents/skills` and `~/.claude/skills`, which Codex, Claude Code, and Cursor discover. Explicit-only skills set `disable-model-invocation: true` (Claude Code, Cursor) and `policy.allow_implicit_invocation: false` in `agents/openai.yaml` (Codex).
+- **Host adapters:** [install.sh](../install.sh) links skills into `~/.agents/skills` and `~/.claude/skills`, which Codex, Claude Code, and Cursor discover, and links `agents/*.md` subagents into `~/.claude/agents`, which Claude Code and Cursor discover. Explicit-only skills set `disable-model-invocation: true` (Claude Code, Cursor) and `policy.allow_implicit_invocation: false` in `agents/openai.yaml` (Codex).
 - **Context budget:** every skill that can be invoked implicitly adds its name and description to each session. Keep descriptions short, mark rarely needed skills explicit-only, and keep repository-specific skills in that repository's own skill directory.
