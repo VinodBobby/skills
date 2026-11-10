@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-custom-tool
-description: Add custom local tools to ToolUniverse alongside the 1000+ built-in tools. Covers JSON-config tools (simplest, no code), Python class tools (REST/SOAP/GraphQL APIs, computational logic), and best-practices for return schemas. Use for wrapping new APIs, adding domain-specific computations, or contributing tools to the registry.
+description: Add custom local tools to ToolUniverse alongside the 2,700+ built-in tools. Covers JSON-config tools (simplest, no code), Python class tools (REST/SOAP/GraphQL APIs, computational logic), and best-practices for return schemas. Use for wrapping new APIs, adding domain-specific computations, or contributing tools to the registry.
 disable-model-invocation: true
 ---
 
@@ -10,10 +10,6 @@ disable-model-invocation: true
 doesn't cover, or if you need a specialized data transformation that no existing tool provides.
 Start with the JSON config approach (simplest — no Python needed); escalate to a Python class
 only if you need custom response parsing or stateful logic.
-
-## Description quality
-
-Keep tool and parameter descriptions concise and grounded in the schema and implementation. State what the tool does and returns, required inputs and formats, defaults, prerequisites, and important limits. Do not promise behavior the code does not provide. This guidance also applies when revising an existing tool description; a separate optimizer skill is not needed.
 
 Three ways to add tools — pick the one that fits your needs:
 

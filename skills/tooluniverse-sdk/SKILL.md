@@ -58,14 +58,17 @@ results = tu.run_batch(calls)
 
 ```python
 def drug_discovery_pipeline(disease_id):
-    tu = ToolUniverse(use_cache=True)
+    tu = ToolUniverse()
     tu.load_tools()
     try:
         targets = tu.tools.OpenTargets_get_associated_targets_by_disease_efoId(efoId=disease_id)
+        # ChEMBL takes ChEMBL target IDs, not the Ensembl IDs in `targets`;
+        # map them first (e.g. via ChEMBL_search_targets). Example IDs: EGFR, COX-2
+        chembl_target_ids = ["CHEMBL203", "CHEMBL230"]
         compound_calls = [
-            {"name": "ChEMBL_search_molecule_by_target",
-             "arguments": {"target_id": t['id'], "limit": 10}}
-            for t in targets['data'][:5]
+            {"name": "ChEMBL_search_activities",
+             "arguments": {"target_chembl_id": tid, "limit": 10}}
+            for tid in chembl_target_ids
         ]
         compounds = tu.run_batch(compound_calls)
         return {"targets": targets, "compounds": compounds}
@@ -76,8 +79,10 @@ def drug_discovery_pipeline(disease_id):
 ## Configuration
 
 ```python
-# Caching
-tu = ToolUniverse(use_cache=True)
+# Caching: opt in per call (use_cache is a framework option on tools.X(...),
+# not an argument to ToolUniverse() or to the tool itself)
+tu = ToolUniverse()
+result = tu.tools.some_tool(param="value", use_cache=True)
 stats = tu.get_cache_stats()
 tu.clear_cache()
 
@@ -98,17 +103,30 @@ tu.load_tools(categories=["proteins", "drugs"])
 
 ## Error Handling
 
-```python
-from tooluniverse.exceptions import ToolError, ToolUnavailableError, ToolValidationError
+A failed call **returns** its error; it does not raise. The classes in
+`tooluniverse.exceptions` never reach the caller — every calling pattern
+(`tu.run`, `tu.tools.X`, the generated wrappers, and their `await` forms)
+converts them into the dict below. Wrapping a call in
+`except ToolValidationError` catches nothing and the error is then used as if
+it were data.
 
-try:
-    result = tu.tools.some_tool(param="value")
-except ToolUnavailableError:
-    ...  # Tool service down
-except ToolValidationError as e:
-    tool_info = tu.all_tool_dict["some_tool"]
-    print(f"Required: {tool_info['parameter'].get('required', [])}")
+```python
+result = tu.tools.some_tool(param="value")
+
+if isinstance(result, dict) and result.get("status") == "error":
+    details = result.get("error_details", {})
+    kind = details.get("type")          # e.g. "ToolValidationError"
+    print(result["error"])
+    print(details.get("next_steps"))    # suggested actions
+    if details.get("retriable"):
+        ...                             # worth another attempt
+    if kind == "ToolValidationError":
+        tool_info = tu.all_tool_dict["some_tool"]
+        print(f"Required: {tool_info['parameter'].get('required', [])}")
 ```
+
+The one exception that does reach you is `AttributeError`, raised by `tu.tools`
+for a tool name that does not exist — not by the call itself.
 
 ## Tool Categories
 
