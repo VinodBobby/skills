@@ -9,7 +9,7 @@ git clone https://github.com/VinodBobby/skills.git ~/Projects/skills
 ~/Projects/skills/install.sh
 ```
 
-The installer links each skill directory into `~/.agents/skills` (Codex, Cursor) and `~/.claude/skills` (Claude Code, Cursor), and links [global/AGENTS.md](global/AGENTS.md) to `~/.codex/AGENTS.md`, `~/.claude/CLAUDE.md`, and `~/.gemini/GEMINI.md`. Because these are links, `git pull` updates every harness. Same-name copies already in those locations, including legacy copies in `~/.codex/skills`, move to `~/.skills-backup/<timestamp>/`.
+The installer links each skill directory into `~/.agents/skills` (Codex, Cursor) and `~/.claude/skills` (Claude Code, Cursor), links each [subagent](#subagents) into `~/.claude/agents` (Claude Code, Cursor), and links [global/AGENTS.md](global/AGENTS.md) to `~/.codex/AGENTS.md`, `~/.claude/CLAUDE.md`, and `~/.gemini/GEMINI.md`. Because these are links, `git pull` updates every harness.
 
 | Flag | Effect |
 | --- | --- |
@@ -18,10 +18,23 @@ The installer links each skill directory into `~/.agents/skills` (Codex, Cursor)
 | `--with-science` | Adds the Harvard ToolUniverse catalog |
 | `--all` | Both of the above |
 | `--no-memory` | Leaves global instruction files alone |
+| `--defaults` | Returns this machine to the default selection |
+| `--update` | Pulls this repository, then relinks |
+| `--force` | Moves machine-local entries that share a repo name to `~/.skills-backup/<timestamp>/` and links the repo version |
 | `--dry-run` | Prints the actions without changing anything |
 | `--uninstall` | Removes every link into this repository |
 
-Rerun the installer after adding or removing a skill. Add a target directory to `SKILL_TARGETS` in [install.sh](install.sh) for another harness, such as `~/.gemini/skills`.
+The installer saves the selection flags (`--with-*`, `--all`, `--no-memory`, `--defaults`) in `~/.config/portable-skills/install-flags` and reuses them on any run that passes none, including `--update` and `--force`. Passing selection flags replaces the saved set.
+
+### Keeping machines current
+
+Run `install.sh --update` on each machine. It fast-forwards this checkout, links new skills and subagents, and removes links to deleted ones. It stops without relinking when the checkout has local commits or edits that block a fast-forward. Commit skill changes here and push them; avoid editing skills through the installed links on a machine. To update on a schedule, add a cron entry such as `0 9 * * * ~/Projects/skills/install.sh --update >/dev/null 2>&1`.
+
+### Machine-local skills
+
+Anything in the target directories that is not a link into this repository is machine-local, and the installer keeps it, including a local skill that shares a name with a repo skill. The installer lists those name clashes after each run; `--force` replaces them with the repo version. Same-name copies in the legacy `~/.codex/skills` directory are reported the same way, because Cursor also scans it. Broken links are removed.
+
+Add a target directory to `SKILL_TARGETS` in [install.sh](install.sh) for another harness, such as `~/.gemini/skills`.
 
 ## Design
 
@@ -51,7 +64,8 @@ Use [the skill template](templates/skill/SKILL.md) as a starting point. Keep eac
 - [Code Review](skills/code-review/SKILL.md): review TypeScript, JavaScript, Python, and Rust changes for actionable defects and spec gaps.
 - [Media Platforms Code Review](skills/media-platforms-code-review/SKILL.md): apply Ads Analytics and Voltron review anchors, including FRE integration contracts.
 - [Equity Research](skills/equity-research/SKILL.md): scan public stocks and investigate companies with sourced facts and explicit assumptions.
-- [Portfolio Strategy](skills/portfolio-strategy/SKILL.md): assess household risk, set portfolio policy and allocation targets, and coordinate a portfolio review.
+- [Portfolio Review](skills/portfolio-review/SKILL.md) *(explicit)*: run a full portfolio review as a staged pipeline of the investment roles, in parallel subagents where the host supports them.
+- [Portfolio Strategy](skills/portfolio-strategy/SKILL.md): assess household risk and set portfolio policy and allocation targets.
 - [Investment Research](skills/investment-research/SKILL.md): compare investment vehicles and costs, and apply sourced investor-style profiles.
 - [Investment Tax Planning](skills/investment-tax-planning/SKILL.md): assess tax effects, loss harvesting, tax lots, and asset location.
 - [Portfolio Maintenance](skills/portfolio-maintenance/SKILL.md): review drift, rebalancing, dividends, cash, and fees.
@@ -64,6 +78,18 @@ Use [the skill template](templates/skill/SKILL.md) as a starting point. Keep eac
 - [PR review follow-up](skills/gh-address-comments/SKILL.md): inspect and address review feedback.
 - [GitHub Actions CI](skills/gh-fix-ci/SKILL.md): inspect failed Actions checks and logs, then fix the observed cause when requested.
 - [Publish to GitHub](skills/yeet/SKILL.md): commit, push, and open a PR when the user explicitly requests it.
+
+## Subagents
+
+Each subagent runs one skill in its own context, read-only, and returns a handoff record. The [Portfolio Review](skills/portfolio-review/SKILL.md) skill orchestrates them; any parent agent can also delegate to them directly.
+
+- [portfolio-policy](agents/portfolio-policy.md): runs Portfolio Strategy for the policy stage.
+- [portfolio-maintainer](agents/portfolio-maintainer.md): runs Portfolio Maintenance for drift and draft trades.
+- [investment-researcher](agents/investment-researcher.md): runs Investment Research for vehicles and costs.
+- [equity-analyst](agents/equity-analyst.md): runs Equity Research on one company; fan out one per ticker.
+- [tax-reviewer](agents/tax-reviewer.md): runs Investment Tax Planning on the draft trade set.
+
+A subagent declares its skill in `skills:` (Claude Code preloads it) and gives the installed `SKILL.md` path in its body, because Cursor does not document skill preloading for subagents. Read-only access is enforced per host: `readonly: true` in Cursor, and in Claude Code a `tools` allowlist of `Read, Grep, Glob, WebFetch, WebSearch`, since Claude Code ignores `readonly` and grants every tool when `tools` is omitted. In Claude Code the roles therefore have no shell, MCP integrations, file edits, or nested agents; the orchestrator supplies account data in the snapshot and runs calculators itself. The validator checks the skill path, `readonly`, and the allowlist. Codex has no subagent adapter here; Portfolio Review runs its stages in one agent there.
 
 ## Upstream catalogs
 

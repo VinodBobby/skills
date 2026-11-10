@@ -14,7 +14,7 @@ Compare current holdings with the user's approved policy and produce a reviewabl
 3. Compare no action, available cash flows, dividend routing, and potential trades where relevant. Show the resulting allocation, liquidity, costs, and assumptions. Route proposed sales and replacements for tax review before presenting a combined recommendation.
 4. Review idle cash against near-term obligations, settlement needs, liquidity, available sweep choices, yield, fees, and product risks. Do not assume a higher yield protects purchasing power or that cash vehicles have identical protections.
 5. Flag material fees and changed share-class eligibility for investment research. Compare a proposed replacement with the cost and tax impact of the change.
-6. Report proposed actions, priority, conditions, data dates, calculations, sources, and unresolved issues. Carry the run and snapshot identifiers forward when part of a coordinated review. Record the next review trigger when the user or host provides one.
+6. Report proposed actions, priority, conditions, data dates, calculations, sources, and unresolved issues. In a portfolio-review run, return the handoff record from the brief. Record the next review trigger when the user or host provides one.
 
 ## Requirements
 

@@ -10,6 +10,7 @@ Provide portable skills for household portfolio policy, investment research, tax
 | --- | --- | --- |
 | How should responsibilities be packaged? | Existing equity research | [Four specialist skills](#package-boundaries) |
 | How should the specialists exchange work? | Package boundaries | [A bounded workflow and shared handoff](#workflow-and-handoff) |
+| How can the roles run as separate agents? | Workflow and handoff | [An orchestrator skill and role subagents](#pipeline-and-subagents) |
 | How should investor styles be represented? | Package boundaries | [Profiles as reference data](#investor-profiles) |
 | How can private profiles remain separate? | Investor profiles | [An explicit private source](#private-profile-source) |
 
@@ -21,7 +22,11 @@ The repository's `equity-research` skill already handles company due diligence. 
 
 ### Workflow and handoff
 
-Put the optional coordination workflow inside portfolio strategy, so it travels with an installable package. A host scheduler or user request can start a review; the skill alone does not schedule work. Each role passes the snapshot, proposed action, reasoning, evidence, and unresolved issues. Keep calculations in available tools and route missing data or material disagreements for review.
+Put the coordination workflow in its own explicit-only `portfolio-review` skill. It first lived inside portfolio strategy, but a policy subagent that loads portfolio strategy would then also load the orchestration steps. A host scheduler or user request can start a review; the skill alone does not schedule work. Each role returns the handoff record in `portfolio-review/references/handoff.md`: identifiers, status, data times, proposed actions with stable IDs, reasoning, effects, assumptions, sources, and unresolved issues. Keep calculations in available tools and route missing data or material disagreements for review.
+
+### Pipeline and subagents
+
+Policy is a gate. Maintenance, vehicle research, and per-company equity research depend only on policy, so they run in parallel. Tax runs on the merged draft trade set, with at most one revision round. Each role is a read-only subagent in `agents/` that loads one skill and returns a record; the orchestrator writes the run directory. Read-only roles keep account actions and private-data writes with the orchestrator. Cursor enforces this with `readonly: true`; Claude Code ignores that field, so each role also has a `tools` allowlist of read and web tools. That allowlist also removes shell calculators and MCP integrations from the roles, so the orchestrator puts the needed data in the snapshot and runs calculations itself. Claude Code and Cursor both load `~/.claude/agents`, so one definition serves both. Without subagent support, the same stages run in one agent.
 
 ### Investor profiles
 
@@ -47,4 +52,4 @@ Assumptions: a household portfolio, with U.S. tax examples where needed. Sources
 
 ## Status and remaining questions
 
-The four packages and starter profiles are implemented. The repository and skill validators passed; the repository validator reported three existing length warnings in unrelated skills. There are no unit tests under `scripts/`. Add private profiles when the user supplies an authorized private source and asks for them. The skills do not provide a scheduler, market-data connection, access control, or trading integration.
+The four role packages, the `portfolio-review` orchestrator, five role subagents, and the starter profiles are implemented. The repository and skill validators passed; the repository validator reported three existing length warnings in unrelated skills. There are no unit tests under `scripts/`. Add private profiles when the user supplies an authorized private source and asks for them. The skills do not provide a scheduler, market-data connection, access control, or trading integration.
