@@ -115,7 +115,7 @@ os.environ["TOOLUNIVERSE_CACHE_PATH"] = str(cache_dir / "cache.sqlite")
 os.environ["TOOLUNIVERSE_CACHE_ENABLED"] = "true"
 os.environ["TOOLUNIVERSE_CACHE_PERSIST"] = "true"
 
-tu = ToolUniverse(use_cache=True)
+tu = ToolUniverse()
 tu.load_tools()
 ```
 
@@ -274,7 +274,7 @@ result = client.run_one_function({
 ```python
 def analyze_disease_targets(disease_efo_id):
     """Complete disease-to-drug pipeline"""
-    tu = ToolUniverse(use_cache=True, hooks_enabled=True)
+    tu = ToolUniverse(hooks_enabled=True)
     tu.load_tools()
     
     try:
@@ -296,21 +296,25 @@ def analyze_disease_targets(disease_efo_id):
         target_info = tu.run_batch(target_calls)
         
         # Step 3: Find compounds (batch)
+        # ChEMBL takes ChEMBL target IDs (map Ensembl/UniProt IDs via ChEMBL_search_targets)
+        chembl_target_ids = ["CHEMBL203", "CHEMBL230"]  # example: EGFR, COX-2
         compound_calls = [
-            {"name": "ChEMBL_search_molecule_by_target",
-             "arguments": {"target_id": tid, "limit": 10}}
-            for tid in target_ids
+            {"name": "ChEMBL_search_activities",
+             "arguments": {"target_chembl_id": tid, "limit": 10}}
+            for tid in chembl_target_ids
         ]
         compounds = tu.run_batch(compound_calls)
         
         # Step 4: ADMET predictions
         all_smiles = []
         for comp_list in compounds:
-            if comp_list and 'molecules' in comp_list:
-                all_smiles.extend([m['smiles'] for m in comp_list['molecules'][:3]])
+            if comp_list and comp_list.get('status') == 'success':
+                acts = comp_list['data']['activities'][:3]
+                all_smiles.extend([a['canonical_smiles'] for a in acts if a.get('canonical_smiles')])
         
         admet_calls = [
-            {"name": "ADMETAI_predict_admet", "arguments": {"smiles": s}}
+            # One ADMETAI_predict_* tool per endpoint group (toxicity, bioavailability, ...)
+            {"name": "ADMETAI_predict_toxicity", "arguments": {"smiles": s}}
             for s in all_smiles
         ]
         admet_results = tu.run_batch(admet_calls)
@@ -340,30 +344,36 @@ def analyze_disease_targets(disease_efo_id):
 
 ### Error Handling Wrapper
 
-```python
-from tooluniverse.exceptions import ToolError, ToolUnavailableError
+A failed call **returns** its error rather than raising, so a fallback written
+as `except ToolUnavailableError` never fires and the caller keeps the error dict
+as though it were a result. Branch on the value instead; `error_details["type"]`
+carries the error class name.
 
+```python
 def safe_tool_executor(tu, tool_name, arguments, fallback_tool=None):
     """Execute tool with comprehensive error handling"""
     try:
-        return tu.run({
+        result = tu.run({
             "name": tool_name,
             "arguments": arguments
         })
-    except ToolUnavailableError:
-        if fallback_tool:
-            print(f"⚠️ {tool_name} unavailable, trying {fallback_tool}")
-            return tu.run({
-                "name": fallback_tool,
-                "arguments": arguments
-            })
-        return {"error": f"Tool {tool_name} unavailable"}
-    except ToolError as e:
-        print(f"❌ Tool error: {e}")
-        return {"error": str(e)}
-    except Exception as e:
+    except Exception as e:                      # only the unexpected gets here
         print(f"❌ Unexpected error: {e}")
         return {"error": str(e)}
+
+    if not (isinstance(result, dict) and result.get("status") == "error"):
+        return result
+
+    details = result.get("error_details", {})
+    if details.get("type") == "ToolUnavailableError" and fallback_tool:
+        print(f"⚠️ {tool_name} unavailable, trying {fallback_tool}")
+        return tu.run({
+            "name": fallback_tool,
+            "arguments": arguments
+        })
+
+    print(f"❌ Tool error: {result['error']}")
+    return {"error": result["error"], "retriable": details.get("retriable", False)}
 
 # Usage
 result = safe_tool_executor(
@@ -425,7 +435,7 @@ tu = ToolUniverse()
 tu.load_tools(categories=["proteins", "drugs"])
 
 # Solution 2: Enable caching
-tu = ToolUniverse(use_cache=True)
+tu = ToolUniverse()
 
 # Solution 3: Use batch execution
 results = tu.run_batch(calls)
