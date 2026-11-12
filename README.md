@@ -95,7 +95,7 @@ A subagent declares its skill in `skills:` (Claude Code preloads it) and gives t
 
 Mirrored catalogs sync daily through review pull requests. Local fixes live in `upstreams/<name>/` and are re-applied after every sync; see [upstream maintenance](docs/upstream-catalogs.md).
 
-- [Obsidian skills](upstreams/kepano-obsidian-skills/source.json) from [kepano/obsidian-skills](https://github.com/kepano/obsidian-skills): Obsidian Markdown, Bases, CLI, JSON Canvas, Defuddle, and Knap. Installed by default.
+- [Obsidian skills](upstreams/kepano-obsidian-skills/source.json) from [obsidianmd/obsidian-skills](https://github.com/obsidianmd/obsidian-skills): Obsidian Markdown, Bases, CLI, JSON Canvas, Defuddle, and Knap. Installed by default.
 - [Harvard ToolUniverse science skills](docs/harvard-tooluniverse.md): scientific research workflows. Installed with `--with-science`.
 
 ## Portability boundary
