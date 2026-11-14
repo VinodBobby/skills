@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-mendelian-randomization
-description: "Mendelian randomization causal inference: test whether an exposure, risk factor, or biomarker causally affects an outcome using genetic instruments from IEU OpenGWAS and EpiGraphDB. Use when the user asks whether X causes Y, whether an observational association is causal, or mentions instrumental variables or two-sample MR, even without saying \"MR\". Covers trait resolution, effect direction, instrument quality, IVW versus MR-Egger versus weighted median agreement, and bidirectional MR. Not for plain GWAS lookups or fitting instruments from raw summary statistics."
+description: "Run or interpret Mendelian randomization with genetic instruments. Use to assess whether an exposure may causally affect an outcome; not for plain GWAS lookups or raw summary-statistic instrument fitting."
 disable-model-invocation: true
 ---
 

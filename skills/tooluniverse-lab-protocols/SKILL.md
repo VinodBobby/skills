@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-lab-protocols
-description: "Find and inspect published, peer-reviewed or community lab protocols from protocols.io — search by technique/keyword, pull a protocol's full description and materials list, or get its ordered step-by-step instructions. Use when someone asks to \"find a protocol for X\", \"how do others do [technique]\", \"get the steps for protocol [ID/DOI]\", or \"check the materials list for this method\" before designing or running a wet-lab experiment. NOT for designing a novel cloning/assembly strategy from scratch (use tooluniverse-molecular-cloning), NOT for primer design (use tooluniverse-primer-design). Honest: protocols.io requires an OAuth Bearer token (PROTOCOLS_IO_API_KEY) for every call, including public reads — without it these tools are blocked, not degraded."
+description: "Find and inspect published or community lab protocols. Use to search by technique or keyword, or retrieve a protocol’s materials and steps."
 disable-model-invocation: true
 ---
 

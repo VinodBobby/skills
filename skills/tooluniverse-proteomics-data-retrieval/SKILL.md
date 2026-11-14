@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-proteomics-data-retrieval
-description: Find and retrieve proteomics datasets from MassIVE, ProteomeXchange, PRIDE Archive, and the NCI Proteomics Data Commons (PDC). Search by species, keyword, accession, or protein; retrieve detailed metadata (instruments, publications, species, PTMs studied), real file-download URLs (PRIDE), or quantitative abundance matrices with clinical linkage (PDC/CPTAC). Use for locating public proteomics datasets to reanalyze, comparing instrument/protocol coverage across studies, pre-download dataset evaluation, and finding every dataset that identified a specific protein.
+description: "Find public proteomics datasets and inspect metadata, files, and quantitative matrices. Use for dataset discovery, pre-download assessment, or protein-specific dataset searches."
 disable-model-invocation: true
 ---
 

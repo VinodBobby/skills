@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-structural-proteomics
-description: Structural biology plus proteomics integration for drug target validation. Combines PDB experimental structures, AlphaFold predictions, GPCRdb, SAbDab antibody structures, ProteinsPlus binding-site prediction, BindingDB ligand-affinity data, BMRB NMR data, CATH/InterPro fold classification, intrinsic-disorder prediction (MobiDB/DisProt/IUPred3), membrane-protein topology (OPM/TopDB/PDBTM/ChannelsDB), enzyme catalytic-site data (M-CSA), PDBe ligand/compound chemistry, and MD simulation trajectory metadata (MDDB). Use for druggability assessment, binding-site characterization, ligand-pocket analysis, structural-confidence scoring (resolution, pLDDT), antibody-target interface analysis, disordered-region assessment, membrane-protein topology, catalytic-mechanism lookup, and finding published MD simulations for a target.
+description: "Integrate protein structures, binding-site data, and proteomics evidence for drug-target assessment. Use for target validation, pocket characterization, or related analyses."
 disable-model-invocation: true
 ---
 

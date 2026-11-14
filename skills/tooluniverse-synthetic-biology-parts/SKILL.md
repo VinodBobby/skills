@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-synthetic-biology-parts
-description: "Look up synthetic biology genetic parts (promoters, RBS, CDS/genes, terminators, reporters, composite devices) from the SynBioHub repository, including the iGEM Registry of Standard Biological Parts. Use when someone asks to \"find a genetic part\", \"look up a BioBrick\", \"search SynBioHub\", \"get the sequence for BBa_...\", \"browse iGEM part collections\", \"find a promoter/RBS/terminator for a genetic circuit\", or \"what parts are available for [organism/function]\". NOT for plasmid backbone/vector lookup by catalog ID (use tooluniverse-molecular-cloning's Addgene coverage), NOT for primer design once a part sequence is chosen (use tooluniverse-primer-design). Honest: SynBioHub disabled anonymous public REST access upstream — every unauthenticated call currently returns 401/HTML-login-page, verified live. This skill explains that limitation plainly and how to unlock real access (SYNBIOHUB_API_TOKEN) rather than pretending the tools work with no setup."
+description: "Find genetic parts such as promoters, RBS, genes, terminators, or reporters in SynBioHub and iGEM. Use for part discovery and sequence lookup, not plasmid vector design."
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-scvi-tools
-description: Deep learning for single-cell omics using scvi-tools — probabilistic (VAE-based) batch correction and integration with scVI, semi-supervised integration and label transfer with scANVI, CITE-seq RNA+protein joint modeling with totalVI, scATAC-seq analysis with PeakVI, multiome RNA+ATAC joint modeling with MultiVI, spatial transcriptomics cell-type deconvolution with DestVI, and RNA velocity with veloVI. Use when scVI, scANVI, totalVI, PeakVI, MultiVI, DestVI, or veloVI are mentioned by name, or when a request needs deep-learning-based batch correction, reference mapping / scArches-style query-to-reference mapping, denoising single-cell counts, joint modeling of two modalities (RNA+protein, RNA+ATAC, single-cell+spatial), or a variational-autoencoder latent space for single-cell data — as opposed to classic scanpy/Harmony-based integration.
+description: "Run deep-learning workflows for single-cell data with scvi-tools. Use for probabilistic batch correction, reference mapping, multimodal integration, or scVI-family models; not standard scanpy/Harmony workflows."
 disable-model-invocation: true
 ---
 

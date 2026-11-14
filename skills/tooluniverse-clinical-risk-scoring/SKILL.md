@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-clinical-risk-scoring
-description: "Compute and interpret validated bedside risk scores for an individual patient with deterministic calculators: CHA2DS2-VASc and HAS-BLED (anticoagulation), CURB-65 (pneumonia), qSOFA (sepsis), Child-Pugh and MELD-Na (cirrhosis), Wells DVT/PE (VTE pretest probability), ASCVD (10-year cardiovascular risk), and eGFR CKD-EPI (kidney function). Use for questions like \"stroke risk for this AF patient\" or \"admit this pneumonia patient?\". Not for polygenic risk (tooluniverse-polygenic-risk-score), population epidemiology (tooluniverse-epidemiological-analysis), or test accuracy math (tooluniverse-diagnostic-test-evaluation)."
+description: "Calculate validated bedside risk scores from patient data with deterministic tools. Use for stroke, pneumonia, sepsis, VTE, ASCVD, liver, or kidney scores; not for polygenic risk or test accuracy."
 disable-model-invocation: true
 ---
 

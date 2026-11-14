@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-clinical-trial-protocol
-description: Generate a full clinical trial protocol document (ICH E6(R2)/FDA-style) for a drug or medical device, including background, objectives/endpoints, study design, population/eligibility, intervention details, assessment schedule, statistical analysis plan with sample-size justification, safety monitoring, and regulatory/ethical sections. Use when users say "generate a clinical trial protocol", "draft a protocol for [drug/device]", "write up the study design as a protocol document", "create an FDA submission protocol", "help me write section X of a trial protocol", or "calculate the sample size for this trial". Produces a stakeholder-ready Markdown deliverable, not a feasibility score.
+description: "Draft or review a clinical trial protocol for a drug or device. Use for protocol sections, endpoints, eligibility, study design, assessments, or statistical plans from a supplied brief."
 disable-model-invocation: true
 ---
 

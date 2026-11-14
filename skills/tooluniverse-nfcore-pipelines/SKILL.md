@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-nfcore-pipelines
-description: "Run real end-to-end bioinformatics pipelines (nf-core rnaseq, sarek, atacseq) via Nextflow + Docker/Singularity, for raw FASTQ/BAM data — either local files or public GEO/SRA datasets. Use when someone asks to \"run RNA-seq alignment\", \"quantify gene expression from FASTQs\", \"call germline or somatic variants from my WGS/WES data\", \"run an nf-core pipeline\", \"analyze ATAC-seq chromatin accessibility data\", \"reanalyze a GEO/SRA dataset (GSE/GSM/SRR accession)\", \"generate a samplesheet for nf-core\", or \"set up Nextflow to process my sequencing data\". Orchestrates the full pipeline (alignment/quantification, or variant calling, or peak calling) rather than a single step. Honest: shells out to real Nextflow/Docker; checks the environment first and stops with install instructions rather than fabricating pipeline output; always runs the pipeline's small test profile before real data."
+description: "Run or plan nf-core bioinformatics pipelines for RNA-seq, variant calling, or ATAC-seq. Use with FASTQ/BAM data or GEO/SRA accessions when Nextflow and a container runtime are available."
 disable-model-invocation: true
 ---
 

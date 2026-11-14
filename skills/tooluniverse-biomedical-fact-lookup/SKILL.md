@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-biomedical-fact-lookup
-description: "Answer biomedical FACTUAL / recall / multiple-choice questions by querying ToolUniverse database tools instead of answering from memory. Triggers on any 'which gene/drug/variant/disease/pathway/miRNA/TF...' lookup, any question phrased 'according to <database>' (DisGeNet, OMIM, MSigDB, miRDB, GTRD, MGI, Ensembl, ClinVar, ChEMBL, OpenTargets, Reactome, GtoPdb, UniProt...), and multiple-choice biology/medicine knowledge questions where one option must be verified against an authoritative source. NOT for analyzing user-supplied data files (CSV/VCF/h5ad → use the data-analysis router) and NOT for open-ended literature synthesis. Use whenever a single correct answer exists in a public biomedical database and could be looked up rather than guessed."
+description: "Answer biomedical factual questions with sourced database lookups. Use for genes, drugs, variants, diseases, pathways, and related associations; not for diagnosis or treatment advice."
 when_to_use: "A factual biomedical question has a single database-checkable answer — especially MCQ of the form 'which of the following X is associated-with / contained-in / a-target-of / located-at Y according to <database>'. Reach for this before answering from memory."
 ---
 

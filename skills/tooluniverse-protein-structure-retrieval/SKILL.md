@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-protein-structure-retrieval
-description: Protein structure retrieval from RCSB PDB, PDBe, AlphaFold, SWISS-MODEL, 3D-Beacons (cross-provider structure aggregator), and PDB-REDO (re-refined X-ray structures), with disambiguation, quality assessment (resolution, R-factor, pLDDT, coverage), and metadata. Distinguishes high-quality experimental (X-ray under 2 Angstrom) vs predicted vs homology-model vs medium-quality structures. Use for fetching protein structures, structure-quality comparison, batch model-availability checks across a gene list, checking every structure provider at once, and selecting structures for drug design or modeling.
+description: "Find and compare experimental or predicted protein structures across public repositories. Use for structure retrieval, availability, coverage, and quality assessment."
 disable-model-invocation: true
 ---
 

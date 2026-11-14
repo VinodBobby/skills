@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-natural-product-dereplication
-description: Dereplicate a putative natural product and assign its chemical taxonomy. Use to answer "is [compound] a known natural product", "what microbe/organism produces [compound]", "what chemical class is [compound]", "dereplicate this metabolite (by formula/exact mass/InChIKey/SMILES)", or "classify this molecule into ChemOnt". Searches NPAtlas for known microbial natural products (producing organism + literature reference), assigns the ChemOnt kingdom→superclass→class→subclass hierarchy via ClassyFire, resolves systematic IUPAC names to structure via OPSIN, and cross-references identity in PubChem. NOT for general drug/compound identity or ADMET (use tooluniverse-chemical-compound-retrieval / tooluniverse-small-molecule-discovery) and NOT for metabolomics pathway/enrichment analysis (use tooluniverse-metabolomics skills).
+description: "Identify known natural products, likely producing organisms, and chemical classes. Use for natural-product dereplication from compound evidence."
 disable-model-invocation: true
 ---
 

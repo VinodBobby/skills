@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-nutrition-food-composition
-description: "Look up nutrient composition, ingredients, allergens, additives, and processing-level classification for foods and branded products via USDA FoodData Central (authoritative US nutrient values, generic + branded foods) and Open Food Facts (crowdsourced global product database — barcode lookup, allergens, additives, Nutri-Score, NOVA processing classification). Use when someone asks 'how much [nutrient] is in [food]', 'what are the ingredients/allergens in [branded product]', 'look up this barcode', 'find products containing/free of [additive/allergen]', or needs dietary/nutrient data for a clinical or research calculation."
+description: "Look up nutrient composition, ingredients, allergens, additives, or processing information for foods and branded products. Distinguish authoritative from crowdsourced data."
 disable-model-invocation: true
 ---
 

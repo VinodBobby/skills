@@ -1,6 +1,6 @@
 ---
 name: tooluniverse
-description: "ToolUniverse router for biology, chemistry, and medicine data analysis. Before analyzing, check the data folder for `*_executed.ipynb` and read its outputs with `read_executed_notebook`; those outputs are authoritative. Then route to one sub-skill from this list only: tooluniverse-rnaseq-deseq2 (RNA/miRNA-seq DE, PCA, clustering), tooluniverse-gene-enrichment (GO/KEGG/Reactome/GSEA), tooluniverse-statistical-modeling (regression, ANOVA, chi-square, power), tooluniverse-image-analysis (microscopy, .tif), tooluniverse-epigenomics (methylation, ChIP-seq), tooluniverse-sequence-analysis (FASTQ, alignment, coverage), tooluniverse-variant-analysis (VCF, SNP), tooluniverse-phylogenetics (trees, PhyKIT), tooluniverse-single-cell (h5ad, scanpy), tooluniverse-crispr-screen-analysis (MAGeCK), tooluniverse-proteomics-analysis (mass spec, TMT). Use for CSV/Excel/VCF/FASTA/h5ad scientific analysis."
+description: "Route biology, chemistry, and medicine data or analysis requests to the relevant ToolUniverse tools and skills. Use for scientific lookups, file analysis, or computational workflows."
 when_to_use: "Activate when the user provides data files to analyze, asks about differential expression, runs statistical tests on clinical data, performs variant analysis, does pathway enrichment, builds phylogenetic trees, or asks any scientific research question."
 paths: "*.csv,*.xlsx,*.tsv,*.vcf,*.fa,*.fasta,*.faa,*.h5ad,*.rds,*.bam"
 ---

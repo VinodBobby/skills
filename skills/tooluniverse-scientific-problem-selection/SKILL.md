@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-scientific-problem-selection
-description: Conversational framework for choosing what scientific problem to work on, pitching a new project idea, troubleshooting a stuck project, or making a strategic research decision. Use when users say "I have an idea for a project", "I'm stuck on my research", "what should I work on", "help me evaluate this project's risk", "is this idea worth pursuing", "help me decide between two research directions", "I need strategic advice about my research", or ask to pitch/refine/de-risk a hypothesis before running any experiments or analyses. Grounds the conversation in real literature-precedent and funding-landscape lookups rather than pure opinion.
+description: "Choose or refine a scientific research problem, troubleshoot a stalled project, or compare research directions. Use literature or funding evidence when needed."
 disable-model-invocation: true
 ---
 
