@@ -1,6 +1,6 @@
 ---
 name: setup-apnovo-remote-tool
-description: Set up, launch, validate, and troubleshoot the AlphaProtein Novo (de novo enzyme design) ToolUniverse remote tool. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot AlphaProtein Novo (de novo enzyme design) as a ToolUniverse remote tool; use for deployment or runtime issues."
 ---
 
 # Set up AlphaProtein Novo as a remote tool

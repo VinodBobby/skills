@@ -1,6 +1,6 @@
 ---
 name: setup-liana-remote-tool
-description: Set up, launch, validate, and troubleshoot the LIANA ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot LIANA as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up LIANA as a remote tool

@@ -1,6 +1,6 @@
 ---
 name: setup-progen2-remote-tool
-description: Set up, launch, validate, and troubleshoot the ProGen2 ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot ProGen2 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up ProGen2 as a remote tool

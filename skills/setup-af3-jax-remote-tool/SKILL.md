@@ -1,6 +1,6 @@
 ---
 name: "setup-af3-jax-remote-tool"
-description: Set up, launch, validate, and troubleshoot the AlphaFold 3 (JAX fork) ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot AlphaFold 3 (JAX fork) as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up AlphaFold 3 (JAX fork) as a remote tool

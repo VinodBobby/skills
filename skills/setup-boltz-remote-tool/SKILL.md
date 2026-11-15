@@ -1,6 +1,6 @@
 ---
 name: setup-boltz-remote-tool
-description: Set up, launch, validate, and troubleshoot the Boltz-2 ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot Boltz-2 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up Boltz-2 as a remote tool

@@ -1,6 +1,6 @@
 ---
 name: setup-paga-remote-tool
-description: Set up, launch, validate, and troubleshoot the PAGA ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot PAGA as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up PAGA as a remote tool

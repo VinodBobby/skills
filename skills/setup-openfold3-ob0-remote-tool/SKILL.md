@@ -1,6 +1,6 @@
 ---
 name: "setup-openfold3-ob0-remote-tool"
-description: Set up, launch, validate, and troubleshoot the OpenFold3 OpenBind-0 ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot OpenFold3 OpenBind-0 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up OpenFold3 (OpenBind-0) as a remote tool

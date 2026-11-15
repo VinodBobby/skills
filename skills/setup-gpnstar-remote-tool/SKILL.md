@@ -1,6 +1,6 @@
 ---
 name: setup-gpnstar-remote-tool
-description: Set up, launch, validate, and troubleshoot the GPN-Star ToolUniverse remote tool (single-nucleotide variant effect scores from a multi-species-alignment language model) and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot GPN-Star as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up GPN-Star as a remote tool

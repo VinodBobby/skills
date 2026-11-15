@@ -445,5 +445,381 @@
     "op": "replace",
     "old": "For strain comparisons, Venn-set denominators, dispersion, and per-chromosome summaries, read [analysis conventions](references/analysis_conventions.md).\n\n",
     "new": "For strain comparisons, Venn-set denominators, dispersion, and per-chromosome summaries, read [analysis conventions](references/analysis_conventions.md).\n"
+  },
+  {
+    "skill": "tooluniverse",
+    "op": "delete",
+    "file": "REFERENCE.md"
+  },
+  {
+    "skill": "tooluniverse",
+    "op": "delete",
+    "file": "CHECKLIST.md"
+  },
+  {
+    "skill": "setup-af2ig-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot AlphaFold 2 initial-guess (dl_binder_design) as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-af3-jax-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot AlphaFold 3 (JAX fork) as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-af3-torch-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot AF3-torch as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-apnovo-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot AlphaProtein Novo (de novo enzyme design) as a ToolUniverse remote tool; use for deployment or runtime issues."
+  },
+  {
+    "skill": "setup-atlasfold-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot AtlasFold as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-bioemu2-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot BioEmu-2 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-boltz-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Boltz-2 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-boltzgen-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot BoltzGen as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-borzoi-calico-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot calico/borzoi variant-scoring (SAD/logSAD/D2/logD2) as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-borzoi-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Borzoi as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-cell2location-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot cell2location as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-cellrank-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot CellRank as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-celltypist-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot CellTypist as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-chai1-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Chai-1 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-chrombpnet-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot ChromBPNet as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-colabdesign-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot ColabDesign (BindCraft binder design) as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-colabfold-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot ColabFold (AlphaFold2-Multimer) as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-complexa-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Proteina-Complexa as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-depmap-24q2-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot DepMap 24Q2 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-e1-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Profluent E1 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-ef2inv-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot ESMFold2-binder-design as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-enformer-deepmind-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot official DeepMind Enformer (TF-Hub SavedModel) genomic track prediction as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-enformer-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Enformer as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-esm-if1-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot ESM-IF1 inverse-folding as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-esm-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot ESM as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-esmc-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot ESM Cambrian as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-esmfold2-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot ESMFold2 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-evo2-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Evo 2 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-expert-feedback-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Human expert feedback as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-genie3-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Genie 3 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-gpnstar-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot GPN-Star as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-harmony-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Harmony as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-immune-compass-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot immune COMPASS as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-ldsc-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot LDSC as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-liana-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot LIANA as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-macs3-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot MACS3 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-milo-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Milo as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-mofa-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot MOFA+ as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-monocle3-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Monocle 3 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-mosaic-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot mosaic (Boltz-2 binder hallucination) as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-opendde-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot OpenDDE as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-openfold3-ob0-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot OpenFold3 OpenBind-0 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-openfold3-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot OpenFold3 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-paga-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot PAGA as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-pinnacle-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot PINNACLE as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-progen2-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot ProGen2 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-proteinmpnn-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot ProteinMPNN / SolubleMPNN fixed-backbone sequence-design as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-protenix-v1-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Protenix as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-rfd4-proteina-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot RFD4-Proteina as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-rfdiffusion3-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot RFdiffusion3 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-rosettafold3-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot RoseTTAFold3 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-scanvi-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot scANVI as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-scrublet-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Scrublet as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-scvelo-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot scVelo as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-scvi-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot scVI as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-singler-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot SingleR as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-slingshot-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Slingshot as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-squidpy-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Squidpy as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-tangram-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot Tangram as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-transcriptformer-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot TranscriptFormer as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
+  },
+  {
+    "skill": "setup-uspto-downloader-remote-tool",
+    "op": "set",
+    "field": "description",
+    "value": "Set up, validate, or troubleshoot USPTO downloader as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
   }
 ]

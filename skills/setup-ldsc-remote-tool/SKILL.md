@@ -1,6 +1,6 @@
 ---
 name: setup-ldsc-remote-tool
-description: Set up, launch, validate, and troubleshoot the LDSC ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot LDSC as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up LDSC as a remote tool

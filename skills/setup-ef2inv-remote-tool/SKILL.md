@@ -1,6 +1,6 @@
 ---
 name: setup-ef2inv-remote-tool
-description: Set up, launch, validate, and troubleshoot the ESMFold2-binder-design ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot ESMFold2-binder-design as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up ESMFold2 binder design as a remote tool

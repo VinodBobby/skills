@@ -1,6 +1,6 @@
 ---
 name: setup-e1-remote-tool
-description: Set up, launch, validate, and troubleshoot the Profluent E1 ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot Profluent E1 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up Profluent E1 as a remote tool

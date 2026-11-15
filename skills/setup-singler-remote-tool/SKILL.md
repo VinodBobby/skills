@@ -1,6 +1,6 @@
 ---
 name: setup-singler-remote-tool
-description: Set up, launch, validate, and troubleshoot the SingleR ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot SingleR as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up SingleR as a remote tool
