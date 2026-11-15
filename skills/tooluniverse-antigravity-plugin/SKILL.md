@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-antigravity-plugin
-description: Install, set up, verify, update, pin, uninstall, or troubleshoot the ToolUniverse plugin on Google Antigravity (AGY / Antigravity IDE / Antigravity 2.0). ALWAYS consult this skill for any of those — don't answer from memory, because the exact CLI name (agy), the "agy plugin install <path>" flow, the uvx tooluniverse MCP server, and the API-key env vars are easy to get wrong. Use it whenever someone wants to get ToolUniverse (or "the 2,700+ scientific tools" / "the harvard tools") working on Antigravity, says the Antigravity plugin or its tools/skills won't load, hits a uvx or MCP-server startup error, asks how Antigravity updates it, wants to pin or remove it, or finds it running an old tool version. Not for the Codex plugin (use tooluniverse-codex-plugin) or Claude Code plugin (use tooluniverse-claude-code-plugin), for running research with the tools, or for authoring new tools or skills.
+description: "Install, configure, update, or troubleshoot the ToolUniverse plugin in Google Antigravity. Use for marketplace setup, version pinning, or connection issues."
 disable-model-invocation: true
 ---
 

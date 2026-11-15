@@ -33,21 +33,21 @@ Each phase maps to a dedicated skill:
 Pick an entry point based on what's needed:
 
 - **"Run a test round"** → jump to [Testing Phase](#testing-phase)
-- **"Expand coverage"** → invoke `Skill(skill="research")` to compare candidate APIs with current coverage
-- **"Create a new tool"** → invoke `Skill(skill="devtu-create-tool")`
-- **"Fix a broken tool"** → invoke `Skill(skill="devtu-fix-tool")`
-- **"Improve skills"** → invoke `Skill(skill="devtu-optimize-skills")`
+- **"Expand coverage"** → use the `research` skill to compare candidate APIs with current coverage
+- **"Create a new tool"** → use the `devtu-create-tool` skill
+- **"Fix a broken tool"** → use the `devtu-fix-tool` skill
+- **"Improve skills"** → use the `devtu-optimize-skills` skill
 - **"Full cycle"** → follow the development phases below and report results; publishing needs a separate explicit request
 
 ---
 
 ## Phase 1: Discovery (optional)
 
-Use `Skill(skill="research")` to compare ToolUniverse coverage with authoritative API documentation. Report candidates with evidence about fit, access requirements, license, and maintenance. Do not create tools or publish changes during discovery.
+Use the `research` skill to compare ToolUniverse coverage with authoritative API documentation. Report candidates with evidence about fit, access requirements, license, and maintenance. Do not create tools or publish changes during discovery.
 
 ## Phase 2: Tool Creation (optional)
 
-Invoke `Skill(skill="devtu-create-tool")` for each new API:
+Use the `devtu-create-tool` skill for each new API:
 1. Create Python tool class implementing the API
 2. Create JSON config with parameters, descriptions, test examples
 3. Register in `_lazy_registry_static.py` and `default_config.py`
@@ -65,7 +65,7 @@ This is the core testing loop, run directly by this skill.
 
 ### Researcher Persona Agents
 
-Launch 2 agents per round (A + B) using the Agent tool with these parameters:
+When subagents are available, run two independent researcher personas per round (A + B). Otherwise, complete the two reviews sequentially:
 
 **Each agent gets:**
 - Domain specialty (oncology, genomics, pharmacology, etc.)
@@ -129,7 +129,7 @@ See `devtu-optimize-skills` Patterns 14-15 for full guidance.
 
 ## Phase 3.5: Benchmark Evaluation
 
-Quantify plugin performance after testing. Uses `Skill(skill="devtu-benchmark-harness")`.
+Quantify plugin performance after testing with the `devtu-benchmark-harness` skill.
 
 ```bash
 # Run lab-bench (20 MCQ)
@@ -150,21 +150,21 @@ Compare with previous round. If any category regresses, prioritize fixing that s
 ## Phase 4: Fix & Validate
 
 1. Implement verified fixes (see [references/bug-patterns.md](references/bug-patterns.md) for code-level patterns)
-2. **Run code-simplifier**: `Skill(skill="simplify")` — always after writing or modifying code
+2. **Review for minimality**: remove code or abstractions that do not address the verified issue; preserve domain checks and rerun affected validations
 3. Lint: `ruff check src/tooluniverse/<file>.py`
 4. Verify syntax: `python -c "from tooluniverse.<module> import <Class>"`
 5. Test: `python -m tooluniverse.cli run <Tool> '<json>'`
 6. Keep changes local and report the changed files and validation results.
 7. Do not stage, commit, push, or open a PR unless the user explicitly requests that action.
 
-> Also see `Skill(skill="devtu-code-optimization")` for reusable fix patterns and anti-patterns.
+> Also see the `devtu-code-optimization` skill for reusable fix patterns and anti-patterns.
 
 ## Phase 5: Optimize (optional)
 
 After fixes are stable:
-- `Skill(skill="tooluniverse-custom-tool")` — revise tool descriptions against the actual schema and behavior
-- `Skill(skill="devtu-optimize-skills")` — improve research skill quality
-- `Skill(skill="tooluniverse-self-review")` and the repository's documented checks — review documentation accuracy
+- `tooluniverse-custom-tool` — revise tool descriptions against the actual schema and behavior
+- `devtu-optimize-skills` — improve research skill quality
+- `tooluniverse-self-review` and the repository's documented checks — review documentation accuracy
 
 ## Phase 6: Publish (only on explicit request)
 

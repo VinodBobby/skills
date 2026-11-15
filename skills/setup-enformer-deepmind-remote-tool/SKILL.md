@@ -1,6 +1,6 @@
 ---
 name: "setup-enformer-deepmind-remote-tool"
-description: Set up, launch, validate, and troubleshoot the official DeepMind Enformer (TF-Hub SavedModel) genomic track prediction ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot official DeepMind Enformer (TF-Hub SavedModel) genomic track prediction as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up the official DeepMind Enformer as a remote tool

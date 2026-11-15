@@ -1,6 +1,6 @@
 ---
 name: setup-monocle3-remote-tool
-description: Set up, launch, validate, and troubleshoot the Monocle 3 ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot Monocle 3 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up Monocle 3 as a remote tool

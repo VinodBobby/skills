@@ -1,6 +1,6 @@
 ---
 name: setup-atlasfold-remote-tool
-description: Set up, launch, validate, and troubleshoot the AtlasFold ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot AtlasFold as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up AtlasFold as a remote tool

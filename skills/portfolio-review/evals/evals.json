@@ -1,0 +1,40 @@
+{
+  "skill_name": "portfolio-review",
+  "notes": "Manual behavioral evals. In a fresh session, compare the same prompt with and without this skill using the same model and tools. Grade the response against assertions only after generation; these cases are not run by a repository test runner.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "full-household-review",
+      "prompt": "Run a full household portfolio review from this snapshot as of 2026-10-31. Jurisdiction: U.S.; tax year: 2026. Goal: long-term growth. Approved policy: 70% stocks / 30% bonds, rebalance only outside a 5 percentage point band. Taxable account: VTI lot A, 100 shares, market value $30,000, basis $20,000, acquired 2023-01-10; BND lot B, 100 shares, market value $7,000, basis $8,000, acquired 2025-01-10; cash $10,000. Roth IRA: VTI 40 shares, market value $12,000; BND 60 shares, market value $4,200. The snapshot has no purchase history, planned transactions, withdrawal needs, or cash-flow forecast. The host supports separate agents. Give me a proposed action list, including no action where appropriate.",
+      "assertions": [
+        "Freezes the supplied inputs and records snapshot/as-of details and any missing fields.",
+        "Runs policy review before maintenance and research; uses separate roles only within host limits.",
+        "Merges proposals, checks conflicts and unique action IDs, then includes tax review before reporting.",
+        "Presents proposals only and does not change accounts or place orders."
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "blocked-on-material-data",
+      "prompt": "Review my portfolio and recommend loss-harvesting trades. I have not supplied tax jurisdiction, tax year, holdings, lots, or recent household purchases.",
+      "assertions": [
+        "Marks the material inputs missing and does not invent eligibility, basis, tax savings, or wash-sale clearance.",
+        "Stops dependent conclusions and asks for the inputs needed to continue.",
+        "Does not make or stage trades."
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "single-position-question",
+      "prompt": "I own 20 shares of ACME. Can you explain what a 10% price drop would do to that position?",
+      "assertions": [
+        "Answers the narrow arithmetic question without launching the full household review pipeline.",
+        "States any assumption needed for the calculation.",
+        "Does not infer or recommend a portfolio trade."
+      ],
+      "files": []
+    }
+  ]
+}

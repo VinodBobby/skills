@@ -10,7 +10,7 @@ description: >
 
 # ToolUniverse Code Optimization
 
-Always run `Skill(skill="simplify")` after writing or modifying code.
+After implementing a change, remove code or abstractions that do not improve the requested behavior. Preserve domain checks and rerun affected validations.
 
 ## Pre-Commit Checklist
 
@@ -22,7 +22,6 @@ Always run `Skill(skill="simplify")` after writing or modifying code.
 - [ ] `ruff check src/tooluniverse/<file>.py` passes
 - [ ] `python -c "from tooluniverse.<module> import <Class>"` passes
 - [ ] `python -m tooluniverse.cli run <Tool> '<real_args_json>'` returns expected data
-- [ ] Ran `Skill(skill="simplify")` on all modified files
 
 ## Key Fix Categories
 

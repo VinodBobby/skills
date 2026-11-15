@@ -1,6 +1,6 @@
 ---
 name: setup-slingshot-remote-tool
-description: Set up, launch, validate, and troubleshoot the Slingshot ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot Slingshot as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up Slingshot as a remote tool

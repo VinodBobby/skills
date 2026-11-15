@@ -1,6 +1,6 @@
 ---
 name: setup-boltzgen-remote-tool
-description: Set up, launch, validate, and troubleshoot the BoltzGen ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot BoltzGen as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up BoltzGen as a remote tool

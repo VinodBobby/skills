@@ -1,0 +1,39 @@
+{
+  "skill_name": "tooluniverse-self-review",
+  "notes": "Manual behavioral evals. In a fresh session, compare the same prompt with and without this skill using the same model and tools. Grade the response against assertions only after generation; these cases are not run by a repository test runner.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "qualitative-review-default",
+      "prompt": "Evaluate whether the current implementation meets my earlier request to export filtered records as CSV. The implementation and earlier request are visible in this thread.",
+      "assertions": [
+        "Uses the earlier user goal as the target and the current implementation as evidence.",
+        "Gives a concise qualitative review without adding a score.",
+        "Separates verified gaps from unavailable evidence."
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "explicit-score-request",
+      "prompt": "Score the current draft from 1 to 5 against these three criteria: correctness, clarity, and completeness. The draft and criteria are visible above. Explain each score with evidence.",
+      "assertions": [
+        "Uses a numeric score because the user explicitly requested one.",
+        "Applies the stated criteria and cites evidence for each score.",
+        "Does not expand into the RET framework unless requested."
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "no-evidence",
+      "prompt": "Review whether my code change is correct. There is no code, diff, artifact, or prior task context available here.",
+      "assertions": [
+        "States that correctness cannot be verified without the artifact or target.",
+        "Does not invent a task, implementation, or review findings.",
+        "Requests the minimum evidence needed to continue."
+      ],
+      "files": []
+    }
+  ]
+}

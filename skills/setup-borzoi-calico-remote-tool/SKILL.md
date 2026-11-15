@@ -1,6 +1,6 @@
 ---
 name: "setup-borzoi-calico-remote-tool"
-description: Set up, launch, validate, and troubleshoot the calico/borzoi variant-scoring (SAD/logSAD/D2/logD2) ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot calico/borzoi variant-scoring (SAD/logSAD/D2/logD2) as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up calico's Borzoi variant scoring as a remote tool

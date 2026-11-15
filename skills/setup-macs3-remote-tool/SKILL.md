@@ -1,6 +1,6 @@
 ---
 name: setup-macs3-remote-tool
-description: Set up, launch, validate, and troubleshoot the MACS3 ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot MACS3 as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up MACS3 as a remote tool

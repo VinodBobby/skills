@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-share-computer
-description: Share tools that live on this computer (the user's own Python function, script or notebook code, a model, a program they already run, or ToolUniverse's reviewed GPU models) so the user's and their colleagues' AI scientists can use them through ToolUniverse. You do the work; the user only answers questions and clicks Allow once in a browser. Use when the user says things like "share my model with my lab", "let my colleague use this script", "make this function a tool", "put my GPU models on ToolUniverse", or "keep my tool running".
+description: "Share a local script, function, notebook, model, or reviewed GPU tool through ToolUniverse. Use when asked to make a computer-based tool available to others."
 ---
 
 # Share a computer's tools through ToolUniverse

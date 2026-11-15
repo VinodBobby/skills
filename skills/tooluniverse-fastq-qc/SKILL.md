@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-fastq-qc
-description: "FASTQ quality control and trimming decisions with local NGS tools: FastQC, MultiQC, seqkit, fastp, and Cutadapt. Use to run QC on reads, interpret FastQC WARN/FAIL modules (per-base quality, adapter content, duplication, GC, overrepresented sequences), or decide whether and how to trim before alignment. Uses real local binaries; emits an install plan when a tool is missing and never overwrites raw FASTQs. Not for differential expression (tooluniverse-rnaseq-deseq2) or alignment and variant calling (tooluniverse-sequence-analysis, tooluniverse-variant-analysis)."
+description: "Run or interpret FASTQ quality control and decide whether to trim reads. Use for sequencing-read assessment with local NGS tools; preserve raw files and report missing tools."
 disable-model-invocation: true
 ---
 

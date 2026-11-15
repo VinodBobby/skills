@@ -42,7 +42,7 @@ See [Portable skill design](docs/portable-skill-design.md) for the design princi
 
 ## Starting a skill
 
-Use [the skill template](templates/skill/SKILL.md) as a starting point. Keep each skill focused on one repeatable workflow. Add references, scripts, or assets only when they support that workflow. Run `python3 scripts/validate_skills.py` (requires PyYAML) before committing; CI runs the same check.
+Use [the skill template](templates/skill/SKILL.md) as a starting point. Keep each skill focused on one repeatable workflow. Add references, scripts, or assets only when they support that workflow. Run `python3 scripts/validate_skills.py` (requires PyYAML) before committing; the single Skills maintenance workflow checks pull requests and main pushes, syncs upstream skills daily, and publishes a monthly Skill Doctor report.
 
 ## Skills
 
@@ -72,6 +72,7 @@ Use [the skill template](templates/skill/SKILL.md) as a starting point. Keep eac
 - [Stock Scanner Analyst](skills/stock-scanner-analyst/SKILL.md): turn scanner results into ranked candidates and conditional entry/exit plans with explicit risk scenarios.
 - [News Research](skills/news-research/SKILL.md): investigate events and claims, trace reports to evidence, and build cited timelines.
 - [Stanford STORM](skills/stanford-storm/SKILL.md): research topics through multiple perspectives, source-grounded questions, a synthesized outline, and citation-aware writing.
+- [Skill Doctor](skills/skill-doctor/SKILL.md): audit skill value, context cost, overlap, and stale guidance; clean proven duplication.
 - [GitHub](skills/github/SKILL.md): route general repository, issue, and pull request work to focused workflows.
 - [Git Workflow](skills/git-workflow/SKILL.md): branch names, checks before commits, rebasing, and squashing.
 - [Pull Request](skills/pull-request/SKILL.md): write PR titles and bodies that follow the repository template.

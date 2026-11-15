@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-microbiome-research
-description: Microbiome research using MGnify, GTDB, ENA, OLS (ENVO biomes), EuropePMC, BacDive (strain phenotypes), MediaDive (growth media recipes), and GMrepo (gut microbiome disease-association counts). Covers study discovery, taxonomic profiling, host-microbe interaction analysis, biome-by-condition queries, strain culturing requirements, and phenotype/disease prevalence lookups. Use for microbiome study selection, organism-environment associations, clinical-microbiome literature review, and "how do I grow this organism" / "how prevalent is this species in condition X" questions. Distinct from analytical workflow (use tooluniverse-metagenomics-analysis for that).
+description: "Research microbiome studies, taxa, functions, and associations using public databases. Use for study discovery, taxonomic or functional lookups, and evidence synthesis."
 disable-model-invocation: true
 ---
 

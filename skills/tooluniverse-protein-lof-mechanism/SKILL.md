@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-protein-lof-mechanism
-description: "Propose the mechanism by which a missense variant causes loss-of-function (LoF), synthesizing evidence from 5 independent layers: AlphaMissense pathogenicity, AlphaFold structural context, ESMC sequence likelihood, SAE feature disruption, and DynaMut2 stability ΔΔG. Distinguishes 'structural stability LoF' (mis-folding) from 'direct functional disruption' (catalytic / binding / PTM site damage). Use for coding missense variants where you need a mechanistic causal model, not just a pathogenicity score."
+description: "Develop evidence-based mechanisms for missense loss of function using sequence and structural evidence. Use for mechanistic variant interpretation, not standalone pathogenicity classification."
 disable-model-invocation: true
 ---
 

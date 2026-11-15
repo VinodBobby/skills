@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-connect
-description: "How to use ToolUniverse Connect (connect.aiscientist.tools), the hosted ToolUniverse service, and when to use it instead of ToolUniverse installed on this computer. Use when the user asks how to use ToolUniverse or ToolUniverse Connect, how to connect Claude, Claude Code or Codex, whether to use the hosted service or a local install, why a tool says a login or API key is missing and where to add it, how to share a model or script with colleagues, how to use a colleague's computer or a TU-SHARE code, how to publish a tool, or when ToolUniverse tools are missing, signed out or not connecting."
+description: "Use ToolUniverse Connect for hosted scientific tools or compare hosted access with a local setup. Use for Connect configuration, remote tools, or authentication questions."
 ---
 
 # ToolUniverse Connect: what each part is for and how to use it

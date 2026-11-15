@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-scientific-peer-review
-description: Review scientific manuscripts, abstracts, methods, statistical analyses, results, discussions, protocols, and experimental designs using calibrated rubrics and prioritized revision advice. Use for journal-style peer review, study-design scoring, methodology or statistics critique, novelty and literature-context assessment, interpretation checks, scientific writing review, reproducibility review, ethics screening, protocol optimization, or a combined manuscript review. This is the host-agent replacement for the corresponding ToolUniverse AgenticTool reviewers and does not require a ToolUniverse backend LLM API.
+description: "Review scientific manuscripts, methods, results, protocols, and study designs. Use for evidence-based peer review, statistical critique, reproducibility, or prioritized revision advice."
 ---
 
 # Scientific Peer Review

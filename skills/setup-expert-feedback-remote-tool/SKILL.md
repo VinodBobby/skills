@@ -1,6 +1,6 @@
 ---
 name: setup-expert-feedback-remote-tool
-description: Set up, launch, validate, and troubleshoot the Human expert feedback ToolUniverse remote tool and optionally relay it through ToolUniverse Connect. Use when deploying or auditing this implementation.
+description: "Set up, validate, or troubleshoot Human expert feedback as a ToolUniverse remote tool; use for deployment or runtime issues, with optional Connect relay."
 ---
 
 # Set up Human expert feedback as a remote tool

@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-ml-inference-utility
-description: "Run inference on Hugging Face hosted models for classification, sentiment, embeddings, masked-token prediction, summarization, zero-shot labels, named-entity recognition, question answering, translation, image classification, and object detection. Use for generic text/image inference or a named Hugging Face model. Configure HF_TOKEN for hosted inference; this skill does not train or fine-tune models. Search Hugging Face Hub for model IDs without a token, or use Replicate when a model is unavailable through the Hugging Face inference provider."
+description: "Run hosted inference with Hugging Face models for common text or image tasks. Use for classification, embeddings, summarization, translation, or question answering; does not train models."
 disable-model-invocation: true
 ---
 

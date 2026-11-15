@@ -1,0 +1,38 @@
+{
+  "skill_name": "code-review",
+  "notes": "Manual behavioral evals. In a fresh session, compare the same prompt with and without this skill using the same model and tools. Grade the response against assertions only after generation; these cases are not run by a repository test runner.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "introduced-regression",
+      "prompt": "Review this diff against the prior behavior. A TypeScript helper changed from `return items.filter(Boolean)` to `return items.filter(x => x.id)`; callers pass records where `id` can be 0, and the API treats 0 as a valid identifier. The existing test suite does not cover id 0. Report actionable findings.",
+      "assertions": [
+        "Identifies that valid id 0 records are dropped and ties it to the changed line.",
+        "States a realistic trigger and user-visible consequence with an appropriate severity.",
+        "Does not edit code or report unrelated style preferences."
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "unclear-comparison-scope",
+      "prompt": "Review the repository for the regression. I did not provide a base revision, branch, PR, or file list, and the working tree contains changes in several unrelated areas.",
+      "assertions": [
+        "Asks which comparison point or changed scope to review before analyzing unrelated changes.",
+        "Does not present speculative findings as confirmed."
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "clean-change",
+      "prompt": "Review this diff. It adds `limitItems(items, limit)` in `src/limit.ts`. When `limit` is omitted, it returns the original full list; when supplied, it requires a nonnegative integer and returns `items.slice(0, limit)`. The diff also adds tests for omitted, zero, positive, negative, and fractional limits. Existing callers do not pass the new argument. Report only actionable issues.",
+      "assertions": [
+        "Reports no actionable issues if none are evidenced.",
+        "Summarizes the reviewed scope and any meaningful validation limit.",
+        "Does not invent a finding to fill the report."
+      ],
+      "files": []
+    }
+  ]
+}

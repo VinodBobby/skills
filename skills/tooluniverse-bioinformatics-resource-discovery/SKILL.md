@@ -1,6 +1,6 @@
 ---
 name: tooluniverse-bioinformatics-resource-discovery
-description: "Discover which bioinformatics software tool, biomedical REST API, R/Bioconductor package, CRAN package, or training material exists for a task, before writing analysis code or building a pipeline. Covers ELIXIR bio.tools (30,000+ software tools/databases by keyword, EDAM topic, or EDAM operation), SmartAPI (biomedical API registry, incl. NCATS Translator components), ELIXIR TeSS (bioinformatics training materials/events), Bioconductor (R packages for computational biology), and CRAN (general R packages). Use when someone asks 'is there an existing tool/package for X', 'what software does [analysis]', 'find an API for Y', or 'is there a tutorial on Z'."
+description: "Find established bioinformatics software, APIs, libraries, or training resources before building a workflow. Use to identify suitable tools or datasets for a computational biology task."
 disable-model-invocation: true
 ---
 
