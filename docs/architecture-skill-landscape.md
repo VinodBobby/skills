@@ -1,15 +1,15 @@
 # Software Architecture Skills: Landscape and Recommendation
 
-**Reviewed:** 2026-09-23  
-**Scope:** Skills available on this machine and public, maintained skill repositories relevant to application architecture, cloud and native infrastructure, sizing, containers, implementation, operations, and observability.
+**Reviewed:** 2026-11-18
+**Scope:** Skills tracked in this repository and public, maintained skill repositories relevant to application architecture, cloud and native infrastructure, sizing, containers, implementation, operations, and observability.
 
 ## Summary
 
-There is no single skill in this scan that covers software architecture across languages, cloud providers, on-premises systems, and native or edge deployments without platform assumptions. The strongest design for this repository is a **portable architecture workflow with optional provider and stack adapters**.
+There is no single skill in this scan that covers software architecture across languages, cloud providers, on-premises systems, and native or edge deployments without platform assumptions. This comparison adds a focused `codebase-design` skill for structural changes to existing systems; broader deployment and capacity guidance remains separate from application-code design.
 
-Use the portable skill to discover the current codebase and its constraints, compare viable designs, estimate capacity from stated assumptions, document decisions, and plan implementation and operations. Load AWS, Azure, Google Cloud, Vercel, or framework-specific guidance only when the target is known. Do not prescribe Docker, Kubernetes, microservices, or a cloud migration by default.
+For architecture questions beyond existing module design, keep the workflow provider-neutral: discover the current system and its constraints, compare viable designs, estimate capacity from stated assumptions, document decisions, and plan implementation and operations. Load AWS, Azure, Google Cloud, Vercel, or framework-specific guidance only when the target is known. Do not prescribe Docker, Kubernetes, microservices, or a cloud migration by default.
 
-This is a reasoned shortlist based on source quality, scope, usefulness for the requested topics, and portability. It is not a measured ranking of skill quality.
+This is a reasoned shortlist based on source quality, scope, usefulness for the requested topics, and portability. It is not a measured ranking of skill quality. The focused Pstack/Matt Pocock comparison and benchmark limits are in [the STORM analysis](pstack-vs-matt-pocock-storm-analysis.md).
 
 ## Strong candidates
 
@@ -17,7 +17,8 @@ This is a reasoned shortlist based on source quality, scope, usefulness for the 
 | --- | --- | --- |
 | [Anthropic Engineering `system-design`](https://github.com/anthropics/knowledge-work-plugins/blob/main/engineering/skills/system-design/SKILL.md) | Best concise, provider-neutral workflow found. It covers requirements, constraints, component and data-flow design, APIs, storage, scaling, reliability, monitoring, and trade-offs. It is a strong starting point for this repo's core skill. | The skill is distributed inside an Anthropic plugin. Adapt its workflow; do not depend on plugin commands or connectors. |
 | [Anthropic Engineering `architecture`](https://github.com/anthropics/knowledge-work-plugins/blob/main/engineering/skills/architecture/SKILL.md) | ADRs and design reviews. Its output includes context, decision, alternatives, cost, complexity, scale, team familiarity, trade-offs, consequences, and actions. Pair it with `system-design`. | It is focused on decision records, not infrastructure implementation or sizing. |
-| [Matt Pocock `codebase-design`](https://github.com/mattpocock/skills/tree/main/codebase-design), [`domain-modeling`](https://github.com/mattpocock/skills/tree/main/domain-modeling), and [`improve-codebase-architecture`](https://github.com/mattpocock/skills/tree/main/improve-codebase-architecture) | Strong machine-local skills for code boundaries, deep modules, domain language, and identifying ways to improve an existing repository. They complement system design at the application-code level. | They focus on codebase design and refactoring, not cloud-provider selection, infrastructure sizing, container operations, or multi-cloud architecture. `improve-codebase-architecture` expects its companion design skills and supporting report resources. |
+| [Pstack `architect`](https://github.com/backnotprop/pstack/blob/main/skills/architect/SKILL.md) | A concise pre-code method for tracing a change and comparing two module shapes. | The wider `poteto-mode` collection adds routing, playbooks, model-role configuration, and delegation conventions that duplicate more than this repo needs. |
+| Matt Pocock [`codebase-design`](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design), [`domain-modeling`](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling), and [`improve-codebase-architecture`](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) | Strong design vocabulary for module interfaces, responsibility placement, and finding opportunities to improve an existing repository. The focused `codebase-design` capability complements system design at the application-code level. | The broader architecture survey expects companion design and domain skills, a visual report, and a specific glossary and grilling workflow. It does not cover cloud-provider selection, infrastructure sizing, or operations. |
 | [Microsoft `cloud-solution-architect`](https://github.com/microsoft/skills/blob/main/.github/skills/cloud-solution-architect/SKILL.md) | Broad Azure architecture reference for service selection, patterns, workload constraints, scale, reliability, cost, and monitoring/tracing. A good Azure adapter or checklist source. | Azure service mappings and guidance must not be treated as provider-neutral. |
 | [Google `google-cloud-solution-architecture`](https://github.com/google/skills/blob/main/skills/cloud/google-cloud-solution-architecture/SKILL.md) | GCP-specific discovery and end-to-end architecture, including diagrams and deployment recommendations. Useful if GCP becomes a target. | GCP-focused; check its current tool and MCP requirements before adoption. |
 | [AWS Agent Toolkit for AWS](https://github.com/aws/agent-toolkit-for-aws) and its [skills catalog](https://github.com/aws/agent-toolkit-for-aws/blob/main/skills/README.md) | Strongest current AWS option in this scan. AWS describes the core skills as covering service selection, architecture decisions, infrastructure as code, containers, security, observability, and cost. It supports several agent environments, including Codex. | AWS-specific. Some workflows gain functionality from AWS tools, live documentation, or credentials. Keep it optional. |
@@ -25,14 +26,18 @@ This is a reasoned shortlist based on source quality, scope, usefulness for the 
 | [AWS sample APEX skills](https://github.com/aws-samples/sample-apex-skills) | Deep operational and implementation guidance for AWS ECS and EKS, including architecture, build, deployment, observability, security, and upgrades. Consider if the chosen runtime is ECS or EKS. | The repository labels itself sample/educational material and requires review before production use. It is more specialized than a general architecture skill. |
 | [Netresearch `docker-development`](https://github.com/netresearch/docker-development-skill) | A focused community skill for Dockerfiles, Compose, image build/testing, and container security. It can inform a later containerization reference. | Not a Docker-maintained standard. Review its split content license (CC-BY-SA-4.0) and test any imported instructions against the target stack and current Docker docs. |
 
-### Skills already available on this machine
+### Related skills in this repository
 
-- `codebase-design`, `domain-modeling`, `improve-codebase-architecture`, `grilling`, `setup-ts-deep-modules`, and `wayfinder` are installed globally. The first three are the closest fit for software design and architecture work; `grilling` helps surface missing constraints, and `wayfinder` helps plan large initiatives.
-- Vercel skills such as `nextjs`, `deployments-cicd`, `observability`, `vercel-functions`, and `vercel-services` are available locally. They are useful for Vercel deployments and Next.js, but they are not neutral infrastructure guidance.
+- `system-design` covers greenfield system and API architecture; `domain-modeling` handles domain language; `service-performance-architecture` handles measured performance goals; `code-review` reviews completed diffs.
+- The new [`codebase-design`](../skills/codebase-design/SKILL.md) skill covers structural changes to existing codebases. Pstack and Matt Pocock upstream packages are comparison sources, not vendored catalogs in this repository.
 
-## Recommended design for this repository
+## Recommendation for this repository
 
-Create one portable `software-architecture` skill. Keep its entry workflow concise and put detailed checklists or templates in referenced files. Add provider adapters only when there is a concrete target and enough repeated use to justify maintaining them.
+Keep the current focused skills and use `codebase-design` for structural work in existing repositories. Adopt the useful design lens from Matt Pocock and the two-shape check from Pstack; do not add either full skill collection as a second general router. Add provider adapters only when there is a concrete target and enough repeated use to justify maintaining them.
+
+## Requirements if a broader architecture skill is added
+
+The following workflow remains a useful target if repeated use justifies a dedicated, provider-neutral `software-architecture` skill:
 
 The core workflow should:
 

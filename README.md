@@ -59,6 +59,7 @@ Use [the skill template](templates/skill/SKILL.md) as a starting point. Keep eac
 - [Organizational Knowledge Search](skills/organizational-knowledge-search/SKILL.md): search connected internal sources and synthesize cited answers.
 - [Research](skills/research/SKILL.md): investigate general external questions when no focused research workflow fits.
 - [Domain Modeling](skills/domain-modeling/SKILL.md): clarify and record domain language in CONTEXT.md and decisions in ADRs.
+- [Codebase Design](skills/codebase-design/SKILL.md): shape module responsibilities and interfaces for structural changes in existing codebases.
 - [REA Reverse Engineering](skills/rea-reverse-engineering/SKILL.md): inspect packaged or running software with REA and report feature behavior with evidence.
 - [ML/AI Architecture](skills/ml-ai-architecture/SKILL.md): design ML/AI systems, including model lifecycle, RAG, graph/vector retrieval, and image/video pipelines.
 - [Code Review](skills/code-review/SKILL.md): review TypeScript, JavaScript, Python, and Rust changes for actionable defects and spec gaps.
