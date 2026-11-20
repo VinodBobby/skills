@@ -15,8 +15,8 @@ The installer links each skill directory into `~/.agents/skills` (Codex, Cursor)
 | --- | --- |
 | *(none)* | First-party skills and the Obsidian catalog |
 | `--with-optional` | Adds skills listed in [profiles/optional.txt](profiles/optional.txt) |
-| `--with-science` | Adds the Harvard ToolUniverse catalog |
-| `--all` | Both of the above |
+| `--with-science` | Adds the curated ToolUniverse authoring, benchmarking, and developer skills |
+| `--all` | Adds optional skills and the curated ToolUniverse set |
 | `--no-memory` | Leaves global instruction files alone |
 | `--defaults` | Returns this machine to the default selection |
 | `--update` | Pulls this repository, then relinks |
@@ -25,6 +25,8 @@ The installer links each skill directory into `~/.agents/skills` (Codex, Cursor)
 | `--uninstall` | Removes every link into this repository |
 
 The installer saves the selection flags (`--with-*`, `--all`, `--no-memory`, `--defaults`) in `~/.config/portable-skills/install-flags` and reuses them on any run that passes none, including `--update` and `--force`. Passing selection flags replaces the saved set.
+
+The ToolUniverse catalog in this repository is intentionally curated. It keeps a small set of skill-authoring, benchmarking, SDK/custom-tool, self-review, and developer workflows. Biomedical research skills and all `setup-*` skills are omitted; add a needed upstream skill to [INCLUDE_SKILLS.txt](upstreams/harvard-tooluniverse/INCLUDE_SKILLS.txt) and sync the catalog. Stanford STORM remains a separate first-party skill.
 
 ### Keeping machines current
 
@@ -98,7 +100,7 @@ A subagent declares its skill in `skills:` (Claude Code preloads it) and gives t
 Mirrored catalogs sync daily through review pull requests. Local fixes live in `upstreams/<name>/` and are re-applied after every sync; see [upstream maintenance](docs/upstream-catalogs.md).
 
 - [Obsidian skills](upstreams/kepano-obsidian-skills/source.json) from [obsidianmd/obsidian-skills](https://github.com/obsidianmd/obsidian-skills): Obsidian Markdown, Bases, CLI, JSON Canvas, Defuddle, and Knap. Installed by default.
-- [Harvard ToolUniverse science skills](docs/harvard-tooluniverse.md): scientific research workflows. Installed with `--with-science`.
+- [Harvard ToolUniverse skills](docs/harvard-tooluniverse.md): a small, curated set of skill-authoring, benchmarking, SDK/custom-tool, and development workflows. Installed with `--with-science`.
 
 ## Portability boundary
 

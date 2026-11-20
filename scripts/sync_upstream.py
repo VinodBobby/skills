@@ -3,6 +3,7 @@
 
 Each upstream lives in upstreams/<key>/ with:
   source.json     repository, skills_path, license, license_target
+  INCLUDE_SKILLS.txt optional allowlist; when present, only these names are mirrored
   SKILL_NAMES.txt mirrored skill names (written by sync)
   SOURCE_COMMIT   mirrored upstream revision (written by sync)
   local-overrides/ optional whole files copied over mirrored skills, re-applied after every sync
@@ -65,16 +66,33 @@ def sync(key: str, source_root: Path, source_commit: str) -> None:
     config = json.loads((config_dir / "source.json").read_text())
     source_skills = source_root / config["skills_path"]
     manifest = config_dir / "SKILL_NAMES.txt"
-    source_names = sorted(p.name for p in source_skills.iterdir() if p.is_dir() and (p / "SKILL.md").is_file())
+    all_source_names = sorted(p.name for p in source_skills.iterdir() if p.is_dir() and (p / "SKILL.md").is_file())
     aliases = config.get("skill_name_aliases", {})
-    names_by_source = {source_name: aliases.get(source_name, source_name) for source_name in source_names}
-    names = sorted(names_by_source.values())
-    if not names:
+    all_names_by_source = {source_name: aliases.get(source_name, source_name) for source_name in all_source_names}
+    all_names = sorted(all_names_by_source.values())
+    if not all_names:
         raise ValueError(f"No skill folders found in {source_skills}")
-    if len(names) != len(set(names)):
+    if len(all_names) != len(set(all_names)):
         raise ValueError("Skill name aliases produce duplicate local skill names")
 
-    for source_name in source_names:
+    include_manifest = config_dir / "INCLUDE_SKILLS.txt"
+    included_names = read_manifest(include_manifest)
+    if include_manifest.is_file():
+        missing = sorted(included_names - set(all_names))
+        if missing:
+            raise ValueError("Included upstream skill(s) were not found: " + ", ".join(missing))
+        selected_source_names = [
+            source_name for source_name in all_source_names if all_names_by_source[source_name] in included_names
+        ]
+    else:
+        selected_source_names = all_source_names
+
+    names_by_source = {source_name: all_names_by_source[source_name] for source_name in selected_source_names}
+    names = sorted(names_by_source.values())
+    if not names:
+        raise ValueError(f"No selected skill folders found in {source_skills}")
+
+    for source_name in selected_source_names:
         skill_dir = source_skills / source_name
         if any(p.is_symlink() for p in skill_dir.rglob("*")):
             raise ValueError(f"Symlink found in upstream skill: {skill_dir}")
@@ -93,7 +111,7 @@ def sync(key: str, source_root: Path, source_commit: str) -> None:
     if collisions:
         raise ValueError("Upstream skill name collides with existing skill(s): " + ", ".join(collisions))
 
-    for source_name in source_names:
+    for source_name in selected_source_names:
         name = names_by_source[source_name]
         shutil.rmtree(SKILLS / name, ignore_errors=True)
         shutil.copytree(source_skills / source_name, SKILLS / name)

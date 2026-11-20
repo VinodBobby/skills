@@ -1,13 +1,5 @@
 {
   "devtu-code-optimization/SKILL.md": null,
   "devtu-github/SKILL.md": null,
-  "devtu-self-evolve/SKILL.md": null,
-  "setup-af2ig-remote-tool/SKILL.md": "5caac7b8a4cd274f9b55424bed9c1159de4b64f4d96cda8e1898d211168f2022",
-  "setup-af2ig-remote-tool/references/af2ig-example.json": null,
-  "setup-complexa-remote-tool/SKILL.md": "84c3417f94cd1a6db819492c157b22d5f6fd00a11c1985f8c3b4c9260abb34dc",
-  "setup-complexa-remote-tool/references/complexa-pdl1-example.json": null,
-  "tooluniverse-rnaseq-deseq2/references/design_formula_guide.md": null,
-  "tooluniverse-rnaseq-deseq2/references/r_clusterprofiler_guide.md": null,
-  "tooluniverse/SKILL.md": "2eed7a0deaa56db98e689a02850b55051d54017c84dfe8c8b351ccda098c50d3",
-  "tooluniverse/references/routing-table.md": null
+  "devtu-self-evolve/SKILL.md": null
 }

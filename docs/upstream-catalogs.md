@@ -5,6 +5,7 @@ Mirrored skill catalogs are configured in `upstreams/<name>/`:
 | File | Purpose |
 | --- | --- |
 | `source.json` | Repository URL, skills path, license location, and install profile (`default` or `science`) |
+| `INCLUDE_SKILLS.txt` | Optional allowlist of upstream skills to mirror; new upstream skills remain out until deliberately added |
 | `SKILL_NAMES.txt`, `SOURCE_COMMIT` | Mirrored skill names and revision, written by the sync |
 | `LOCAL_SKILLS.txt` | Catalog skills retained locally; included in the catalog install profile but not overwritten by sync |
 | `skill_name_aliases` in `source.json` | Local names for upstream skills whose source names do not meet the Agent Skills naming rules |
@@ -13,6 +14,8 @@ Mirrored skill catalogs are configured in `upstreams/<name>/`:
 | `overrides.json` | Targeted edits: `set` or `quote` a frontmatter field, `replace` text, `rename`, `delete`, or `write` a file; `optional: true` skips an edit until its target skill is mirrored |
 
 The [sync workflow](../.github/workflows/sync-upstream-skills.yml) runs daily and on manual dispatch, one catalog at a time. It mirrors the upstream skills, re-applies local fixes, runs the validator, and opens a review pull request. It never merges, force-pushes, or deletes skills. If a sync pull request for a catalog is already open, later runs wait. Enable **Settings → Actions → General → Allow GitHub Actions to create and approve pull requests** so it can open pull requests.
+
+When `INCLUDE_SKILLS.txt` exists, sync mirrors only its listed skills. It stops if an included name no longer exists upstream. Skills outside the allowlist are not copied into the repository. Sync does not delete deselected skills automatically; remove them and update `SKILL_NAMES.txt` in the same reviewed curation change.
 
 The sync stops for manual review when:
 

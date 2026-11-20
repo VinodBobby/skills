@@ -62,6 +62,38 @@ def validate() -> int:
     catalog = catalog_names()
     first_party: list[str] = []
 
+    for include_manifest in sorted((REPO / "upstreams").glob("*/INCLUDE_SKILLS.txt")):
+        included = {
+            line.strip()
+            for line in include_manifest.read_text().splitlines()
+            if line.strip() and not line.startswith("#")
+        }
+        mirrored_file = include_manifest.with_name("SKILL_NAMES.txt")
+        mirrored = {
+            line.strip()
+            for line in mirrored_file.read_text().splitlines()
+            if line.strip() and not line.startswith("#")
+        } if mirrored_file.is_file() else set()
+        if included != mirrored:
+            errors.append(f"{include_manifest.relative_to(REPO)}: entries must match {mirrored_file.name}")
+
+    core_profile = REPO / "profiles" / "tooluniverse-core.txt"
+    tooluniverse_catalog = REPO / "upstreams" / "harvard-tooluniverse"
+    if core_profile.is_file() and tooluniverse_catalog.is_dir():
+        profile_names = {
+            line.strip()
+            for line in core_profile.read_text().splitlines()
+            if line.strip() and not line.startswith("#")
+        }
+        catalog_names_for_profile = {
+            line.strip()
+            for manifest_name in ("SKILL_NAMES.txt", "LOCAL_SKILLS.txt")
+            for line in (tooluniverse_catalog / manifest_name).read_text().splitlines()
+            if line.strip() and not line.startswith("#")
+        }
+        if profile_names != catalog_names_for_profile:
+            errors.append(f"{core_profile.relative_to(REPO)}: entries must match the curated ToolUniverse catalog")
+
     for skill_dir in sorted(p for p in SKILLS.iterdir() if p.is_dir()):
         name = skill_dir.name
         skill_md = skill_dir / "SKILL.md"

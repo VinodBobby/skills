@@ -1,0 +1,6 @@
+# Small upstream subset retained for the repository's ToolUniverse development workflows.
+create-tooluniverse-skill
+devtu-benchmark-harness
+tooluniverse-custom-tool
+tooluniverse-sdk
+tooluniverse-self-review
