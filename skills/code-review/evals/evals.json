@@ -33,6 +33,40 @@
         "Does not invent a finding to fill the report."
       ],
       "files": []
+    },
+    {
+      "id": 4,
+      "name": "python-code-review-trigger",
+      "prompt": "Review this Python diff. It changes `def add_item(item, items=None):` to `def add_item(item, items=[]):`, then appends to and returns `items`. Report actionable findings.",
+      "assertions": [
+        "Recognizes this as a Python code review and applies Python-specific checks.",
+        "Identifies that the default list is shared across calls and ties the finding to the changed line.",
+        "States a realistic trigger and consequence with an appropriate severity.",
+        "Does not report unrelated style preferences or edit the code."
+      ],
+      "files": []
+    },
+    {
+      "id": 5,
+      "name": "python-required-key-and-operator-protocol",
+      "prompt": "Review this Python diff. The API contract requires `token`, but the change reads `payload.get(\"token\")` and passes the result to authentication. It also changes `Amount.__add__` to raise `TypeError` for an unsupported operand, even though that operand's type implements `__radd__` for Amount. Report actionable findings.",
+      "assertions": [
+        "Identifies that `.get()` masks absence of a required key and recommends direct access or explicit boundary validation.",
+        "Identifies that raising directly from `__add__` prevents the relevant reflected operator fallback and recommends returning `NotImplemented` for the unsupported operand.",
+        "Ties each finding to changed behavior and a concrete consequence.",
+        "Does not flag optional `.get()` use or unrelated style preferences."
+      ],
+      "files": []
+    },
+    {
+      "id": 6,
+      "name": "python-optional-dictionary-key",
+      "prompt": "Review this Python diff. It reads an optional `theme` field with `theme = preferences.get(\"theme\", \"light\")`; the API docs say the field is optional and `light` is the default. Report only actionable issues.",
+      "assertions": [
+        "Does not report `.get()` merely for being used when the key is documented as optional and has a safe default.",
+        "Does not invent unrelated findings."
+      ],
+      "files": []
     }
   ]
 }

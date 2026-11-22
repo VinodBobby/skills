@@ -2,7 +2,7 @@
 
 ## Assumptions and scope
 
-This analysis covers the portable skills repository in this checkout and the current public contents of [`gh-axi`](https://github.com/kunchenguid/gh-axi), [`firstmate`](https://github.com/kunchenguid/firstmate), [`axi`](https://github.com/kunchenguid/axi), and [`no-mistakes`](https://github.com/kunchenguid/no-mistakes). The goal is to improve the repo's skill authoring and agent workflows, not to turn this skills catalog into a coding-agent runtime.
+This analysis covers the portable skills repository in this checkout and the current public contents of [`gh-axi`](https://github.com/kunchenguid/gh-axi), [`firstmate`](https://github.com/kunchenguid/firstmate), [`axi`](https://github.com/kunchenguid/axi), and [`no-mistakes`](https://github.com/kunchenguid/no-mistakes). A follow-up compares Python review practices in [`wdm0006/python-skills`](https://github.com/wdm0006/python-skills), [`wispbit-ai/skills`](https://github.com/wispbit-ai/skills), and the supplied MCP Market listing. The goal is to improve the repo's skill authoring and agent workflows, not to turn this skills catalog into a coding-agent runtime.
 
 The checkout tracks 52 `SKILL.md` packages under `skills/`; 11 are ToolUniverse-oriented and 3 are listed as optional. The README already separates default, optional, and science installs.
 
@@ -39,6 +39,9 @@ Applied in this checkout:
 3. Added scout, ship, and evaluator task shapes and a compact brief/handoff contract to [`skills/agentic-software-workflow/SKILL.md`](../skills/agentic-software-workflow/SKILL.md). The coordinator remains the user's contact; briefs preserve scope; isolated parallel work may continue through manageable file overlap; real dependencies, shared state, and unsafe integrations serialize; routine status and duplicate review are minimized.
 4. Updated [`skills/github/SKILL.md`](../skills/github/SKILL.md) to use `gh-axi` when already installed for shell-based tasks, while preserving the connected integration and raw `gh` fallbacks. The guidance also protects against ambiguous empty results and duplicate writes after failed readback.
 5. Added an optional gated-delivery path to [`skills/agentic-software-workflow/SKILL.md`](../skills/agentic-software-workflow/SKILL.md) and [`skills/yeet/SKILL.md`](../skills/yeet/SKILL.md). They preserve user intent for review, avoid duplicate checks, defer intent-sensitive findings, distinguish PR readiness from merge, and leave installation opt-in. The workflow also calls for behavioral checks against an independent oracle instead of treating source-string matches as proof.
+6. Kept Python review in the existing [`code-review` skill](../skills/code-review/SKILL.md), made its description explicitly match Python review requests, routed GitHub PR code reviews to it, and added a manual eval for a Python-specific mutable-default regression.
+7. Verified Wispbit's Python skill and all eight rule files through GitHub. Added focused checks for required dictionary keys and operator fallback; retained only concrete performance issues from list-comprehension rules; kept blanket import/style rules conditional.
+8. Added [`python-library-review`](../skills/python-library-review/SKILL.md) for whole-package health and release-readiness audits. It adapts the `wdm0006/python-skills` library-review dimensions while keeping `code-review` focused on snippets and changes.
 
 ## Defer
 
@@ -47,6 +50,18 @@ Applied in this checkout:
 - Do not run `no-mistakes init` by default. It adds a named Git remote, local hooks, a background daemon, and an agent skill; repository initialization must be an explicit user choice. Avoid copying its full command guide because the upstream agent skill and CLI help are the current source of truth.
 - Do not import Firstmate's entire distro, worker fleet, persistent supervision, or Relay into this catalog. Its task-boundary and worktree patterns are the reusable parts.
 - Do not remove or merge skills based only on overlap in vocabulary. The repo's `skill-doctor` guidance requires evidence of redundant behavior and cautions against treating size or a lack of usage data as a deletion rule.
+
+## Python code review sources and fit
+
+The existing [`code-review` skill](../skills/code-review/SKILL.md) covers changed Python behavior, including mutable defaults, exceptions, resources, async boundaries, paths, and supported-version compatibility. The [`wdm0006/python-skills` library-review skill](https://github.com/wdm0006/python-skills/tree/main/skills/python/library-review) was inspected with its checklist and report template. It covers whole-library structure, distribution, API, tests, security, docs, and CI/CD, which is a distinct task from reviewing a diff.
+
+The Wdm checklist contains useful breadth, but some thresholds and conventions are opinionated: it recommends `src/` layout, `py.typed`, `__all__`, a fixed 85% coverage bar, exact dependency pin policies, and freshness cutoffs. These should be findings only when required by the library's distribution model, user contract, or project configuration. Its report template uses dimension stars; the new local skill instead asks for evidence-backed findings and only reports dimensions that were assessed.
+
+The [`wispbit-ai/skills` Python skill and its eight rule files](https://github.com/wispbit-ai/skills/tree/main/skills/python-expert-best-practices-code-review) were fetched through GitHub. Its critical rules cover required dictionary keys and the operator protocol; common-bug rules cover mutable defaults and generic exceptions; lower-priority rules cover list-comprehension side effects, import placement, comments, and redundant `else` blocks. Mutable defaults and broad/swallowed exceptions already overlap with `code-review`. Required-key handling and reflected operator dispatch were missing, so the existing Python checklist and manual evals now cover them. Report unused list-comprehension allocation only when the memory or performance impact is concrete. Keep inline imports when they intentionally defer optional/heavy dependencies or avoid cycles; do not adopt a blanket top-of-file rule. Treat comment and `else` preferences as style unless the repo requires them or they cause a real defect. Wispbit labels its guide Python 3.14+; use each repository's declared support range instead of imposing that minimum.
+
+Keep the change-review entry point explicit for Python snippets, diffs, and pull requests, and route full-package audits to `python-library-review`. Use the Wispbit rules as conditional review checks, not universal style gates. Keep broader library-health work separate so code-review output stays tied to changed behavior.
+
+The supplied MCP Market URL for `python-code-review-5` remains inaccessible and did not resolve in targeted search, so its exact checklist and overlap remain unverified. No content from it was copied. The new and updated local guidance is based on the two GitHub repositories whose files were fetched.
 
 ## Follow-up measurement
 

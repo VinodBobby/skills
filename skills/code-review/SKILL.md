@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Review changed TypeScript, JavaScript, Python, and Rust code for actionable correctness, security, and regression issues against the request and repository conventions. Use for diffs, branches, pull requests, and working-tree reviews.
+description: Review Python snippets and changed Python code, diffs, branches, pull requests, and working trees for actionable correctness, security, and regression issues against the request and repository conventions. Also review changed TypeScript, JavaScript, and Rust code. Use python-library-review for whole-package health or release-readiness audits.
 ---
 
 # Purpose
@@ -22,7 +22,7 @@ When an originating issue, ticket, or specification is available, compare the ch
 Apply language-specific checks where they matter:
 
 - **TypeScript and JavaScript:** check boundary validation, null and undefined handling, type narrowing, coercion, async error paths, unhandled promises, shared mutation, serialization, and module or runtime compatibility.
-- **Python:** check input assumptions, `None` handling, mutable defaults, swallowed exceptions, resource cleanup, sync and async boundaries, subprocess or path handling, and dependency or version compatibility.
+- **Python:** distinguish required dictionary keys from optional keys and falsey values; use direct indexing or explicit boundary validation only when the contract requires a key, and reserve `.get()` for optional values with safe defaults. Check mutable defaults and class state, broad or swallowed exceptions, resource cleanup, async boundaries, and subprocess or path handling. When operator dunders change, check unsupported operands against `NotImplemented`/reflected dispatch and check augmented-assignment return behavior against the type's contract. Flag discarded list comprehensions only when their unused allocation has a concrete performance impact. For package changes, inspect public API compatibility, supported Python versions, and import-time dependency cost; preserve intentional lazy imports for optional or heavy dependencies.
 - **Rust:** check error propagation, panic paths such as `unwrap` on fallible input, ownership and lifetime assumptions, `unsafe` invariants, concurrency and lock behavior, feature flags, and trait or type constraints.
 - **Across languages:** check API compatibility, authorization and validation boundaries, resource limits, concurrency, and failure recovery when relevant to the diff.
 

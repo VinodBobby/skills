@@ -1,0 +1,29 @@
+{
+  "skill_name": "python-library-review",
+  "notes": "Manual routing and behavior evals. Compare identical prompts with and without this skill; grade assertions after generation.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "whole-library-audit",
+      "prompt": "Audit this Python package for release readiness as a whole. Its pyproject.toml supports Python 3.10 through 3.12, it uses a flat layout intentionally, typed public APIs ship from a wheel, CI tests all three supported versions, and the repository sets no coverage threshold. Identify important gaps and evidence to gather.",
+      "assertions": [
+        "Uses a package-wide audit scope across distribution, public API, tests, security, documentation, supported versions, and CI.",
+        "Does not flag flat layout or the absence of an 85% coverage threshold by themselves.",
+        "Checks whether typed metadata and wheel contents match the stated typed public API.",
+        "Separates verified findings from checks that still need evidence and avoids unsupported numeric scores."
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "specific-diff-routing",
+      "prompt": "Review this Python diff in a library: it changes a required `token` read from `payload[\"token\"]` to `payload.get(\"token\")`, then passes the result to authentication. The API contract says token is required. Report actionable findings for the change.",
+      "assertions": [
+        "Recognizes this as a change review and routes to code-review instead of starting a whole-library audit.",
+        "Identifies that `.get()` masks a missing required key and ties the consequence to the changed line.",
+        "Does not report unrelated package-wide gaps."
+      ],
+      "files": []
+    }
+  ]
+}

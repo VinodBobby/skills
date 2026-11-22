@@ -10,6 +10,7 @@ Use the GitHub integration when the host provides one. Otherwise use the authent
 ## Route the work
 
 - General repository, issue, or pull request triage: handle it here.
+- Review changed code in a pull request, including Python code reviews: read [code-review](../code-review/SKILL.md).
 - Review threads and requested changes: read [gh-address-comments](../gh-address-comments/SKILL.md).
 - Failing GitHub Actions checks: read [gh-fix-ci](../gh-fix-ci/SKILL.md).
 - Branch publishing, commit, push, and pull request: read [yeet](../yeet/SKILL.md).
@@ -18,7 +19,7 @@ Use the GitHub integration when the host provides one. Otherwise use the authent
 
 1. Resolve the repository and item from the user's request or local Git context. Ask for the repository when it remains unclear.
 2. Use the available GitHub integration when it supports the requested operation. If shell access is needed, use `gh-axi` when it is already available and supports the task; otherwise use the authenticated `gh` CLI. Do not install a CLI or session hook as part of ordinary triage.
-3. Route to a specialist once the task is clearly review follow-up, Actions debugging, or publishing.
+3. Route code review, review follow-up, Actions debugging, and publishing to their specialist skills when the task reaches those workflows.
 4. Keep reads separate from writes. Comment, resolve a review, change labels, commit, push, or open a PR only when the user requested that action.
 5. Summarize what you inspected, changed, and could not verify.
 

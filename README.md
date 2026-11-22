@@ -65,6 +65,7 @@ Use [the skill template](templates/skill/SKILL.md) as a starting point. Keep eac
 - [REA Reverse Engineering](skills/rea-reverse-engineering/SKILL.md): inspect packaged or running software with REA and report feature behavior with evidence.
 - [ML/AI Architecture](skills/ml-ai-architecture/SKILL.md): design ML/AI systems, including model lifecycle, RAG, graph/vector retrieval, and image/video pipelines.
 - [Code Review](skills/code-review/SKILL.md): review TypeScript, JavaScript, Python, and Rust changes for actionable defects and spec gaps.
+- [Python Library Review](skills/python-library-review/SKILL.md): audit a Python package's overall health and release readiness using its own configuration and support policy.
 - [Media Platforms Code Review](skills/media-platforms-code-review/SKILL.md): apply Ads Analytics and Voltron review anchors, including FRE integration contracts.
 - [Equity Research](skills/equity-research/SKILL.md): scan public stocks and investigate companies with sourced facts and explicit assumptions.
 - [Portfolio Review](skills/portfolio-review/SKILL.md) *(explicit)*: run a full portfolio review as a staged pipeline of the investment roles, in parallel subagents where the host supports them.
