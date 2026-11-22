@@ -14,6 +14,15 @@ Use this workflow only when the user explicitly asks to publish changes, such as
 - `gh` installed and authenticated, unless an available GitHub integration can complete the requested PR operation.
 - A clear understanding of which changes belong in the publication.
 
+## no-mistakes delivery path
+
+Use this path instead of the manual sequence below only when the user explicitly requests `no-mistakes` or a gated publish. If the repository is already configured and the CLI is available, follow its installed `/no-mistakes` skill when present and the current CLI help. Do not install the tool or run `no-mistakes init` unless the user asks; if setup is missing, stop before committing or publishing and report the prerequisite.
+
+- Inspect the worktree first and preserve unrelated changes. The gate expects committed task changes on a feature branch; pass the user's original intent and constraints as the validation context, supplemented with implementation decisions rather than replaced by a diff summary.
+- Let the gate own review, tests, documentation, lint, push, PR, and CI. Do not duplicate those checks manually or bypass the gate with a direct push.
+- Respond to approval gates based on their structured findings. Apply only explicitly eligible mechanical fixes; bring findings that affect user intent or product behavior back to the user.
+- Report the exact outcome, including skips or overrides. A checks-passed result means the PR is ready for review; it does not authorize merging.
+
 ## Workflow
 
 1. Inspect `git status -sb`, the current branch, remotes, and the diff.
