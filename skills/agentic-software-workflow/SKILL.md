@@ -14,15 +14,15 @@ Use this skill when coding agents are a significant part of software delivery. P
 
 ## Choose a task shape
 
-- **Scout:** investigate, plan, or audit without editing; return a standalone report with evidence, gaps, and a recommendation.
-- **Ship:** make an authorized change against a clear outcome and acceptance contract; name the owned files or area and the completion evidence.
+- **Ship:** the default when the user asks for implementation; make the authorized change against a clear outcome and acceptance contract, and name the owned area and completion evidence.
+- **Scout:** investigate without editing when the user requests a knowledge-only deliverable or unresolved uncertainty could materially change whether or what to build; return a standalone report with evidence, gaps, and a recommendation.
 - **Evaluator:** independently check higher-risk work against fixed acceptance criteria; return evidence without changing the implementation unless assigned a separate ship task.
-- Split research from implementation when it can clarify scope or produce an independent outcome. Keep one coordinator responsible for user communication and integration.
+- Keep bounded research inside a ship task when it will not change the plan; do not launch a separate scout when current evidence is sufficient. Keep one coordinator responsible for user communication and integration.
 
 ## Existing repository workflow
 
-1. Define a user-visible outcome and a small acceptance contract before assigning work. Default to one owner; split only when the outcomes can proceed and be verified independently. Prefer one complete workflow over a long feature-presence checklist.
-2. Identify the authoritative checks and test data. Keep acceptance evidence independent from implementation so an agent cannot make a feature pass by weakening or removing its test. Test observable behavior through a public interface with an independent oracle; source-string checks only prove behavior when the text itself is the contract.
+1. Define a user-visible outcome and a small acceptance contract before assigning work. Default to one owner; split only when the outcomes can proceed and be verified independently. For one-off work, use the simplest end-to-end path; add orchestration, wrappers, or automation only when a concrete blocker or repeated need justifies it. Prefer one complete workflow over a long feature-presence checklist.
+2. Identify the authoritative checks and test data. Keep acceptance evidence independent from implementation so an agent cannot make a feature pass by weakening or removing its test. Test observable behavior through a public interface with an independent oracle. For machine-consumed declarative files, test parsed meaning or use their real consumer; source-string checks only prove behavior when the text itself is the contract.
 3. Give each worker the smallest self-sufficient brief: task shape and outcome, observable done condition, relevant source-of-truth context, owned area and boundaries, required check, and return format. Do not forward the full conversation or repeat general instructions. Treat the user's ask as scope; record useful out-of-scope ideas as follow-up instead of adding them.
 4. Give each editor an isolated worktree or branch and clear ownership. Prefer non-overlapping areas, but treat file overlap as a risk rather than an automatic blocker when tasks are independent, independently verifiable, and safe to reconcile. Serialize true semantic dependencies, shared mutable state, incompatible migrations, or work that cannot be reconciled safely.
 5. Keep one coordinator responsible for routing, integration, and user communication. Workers return to the coordinator. Use completion signals where available; send updates when a deliverable, blocker, or decision changes, and avoid routine status chatter or repeated polling of healthy work. Resolve routine choices directly and surface decisions that affect scope, acceptance, or authority.
@@ -46,7 +46,9 @@ If a worker finds a material ambiguity, scope conflict, or authority question, r
 
 When the user chooses a configured delivery gate such as `no-mistakes`, treat it as the single owner of its review, test, documentation, lint, publish, PR, and CI stages. Use its installed skill and current CLI help; do not run a parallel copy of the same gates or push around a parked gate. Only skip or override a gate through its supported decision path with the required authorization.
 
-- Preserve the user's intent, constraints, and decisions as the gate's review context; do not replace them with a summary of the diff.
+- Pass the user's original goal and constraints as the gate's intent, preserve later decisions, and add material implementation choices; do not replace them with a diff summary.
+- A parked gate needs a supported response; do not assume it will resume on its own, poll status for progress, or restart an active run to get past a finding.
+- When assigned a validation phase inside an active outer run, handle only that phase and return its evidence; do not initialize or control the outer pipeline or publish. The outer executor alone drives the run. If the tool refuses a nested run, stop and return control to the outer executor.
 - Let the gate work in its isolated workspace. Apply only findings it classifies as low-risk mechanical fixes; return product, scope, or intent decisions to the user.
 - Re-run affected checks after fixes. If a repair changes reviewed code or its base and the gate cannot prove it is still covered, require review again before publication.
 - Wait on the gate's completion or decision signal instead of polling. Report skips, overrides, and failure states accurately. A green check result means the change is ready for the next authorized step; it does not mean the PR was merged.
