@@ -40,6 +40,10 @@ Decide whether to delegate before choosing a worker count. Compare the expected 
 7. For complex or high-risk work, separate implementation from evaluation. Let the evaluator use the real interface, fixed acceptance criteria, representative inputs, and independent evidence. Reuse the selected delivery path's review and test gates; do not add a duplicate reviewer for the same checks. An evaluator agent is not proof by itself.
 8. Verify acceptance against artifacts and checks, not a worker's status message alone. Run focused checks, workflow-level acceptance, and the repository's required checks as appropriate. For visual products, inspect the rendered result and interactions. At handoff, report changed paths, checks and results, remaining risks, and what could not be verified.
 
+### Optional terminal workspace managers
+
+Terminal workspace managers can make parallel sessions easier to supervise, but they are optional and do not provide Git isolation by themselves. On Windows, [wmux](https://github.com/amirlehmam/wmux) is one option; use it only when installed and compatible with the shell and agent runtime. Keep each concurrent editor in its own worktree and branch regardless of the terminal manager. On macOS or other hosts, use an available host-native manager or none. If the host cannot provide safe edit isolation, serialize the work.
+
 After review, integrate changes through the authorized delivery path. Keep a worker's branch or worktree until its changes are integrated or explicitly abandoned; remove temporary workspaces only after confirming they contain no unreviewed work. A delegation brief does not authorize a commit, merge, push, deployment, or branch deletion unless it says so.
 
 ### Brief and handoff shape
