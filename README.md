@@ -68,6 +68,7 @@ Use [the skill template](templates/skill/SKILL.md) as a starting point. Keep eac
 - [Python Library Review](skills/python-library-review/SKILL.md): audit a Python package's overall health and release readiness using its own configuration and support policy.
 - [Media Platforms Code Review](skills/media-platforms-code-review/SKILL.md): apply Ads Analytics and Voltron review anchors, including FRE integration contracts.
 - [Equity Research](skills/equity-research/SKILL.md): scan public stocks and investigate companies with sourced facts and explicit assumptions.
+- [GS Quant](skills/gs-quant/SKILL.md): write and troubleshoot Python workflows with Goldman Sachs' `gs_quant` library, including data-backed strategy backtests.
 - [Portfolio Review](skills/portfolio-review/SKILL.md) *(explicit)*: run a full portfolio review as a staged pipeline of the investment roles, in parallel subagents where the host supports them.
 - [Portfolio Strategy](skills/portfolio-strategy/SKILL.md): assess household risk and set portfolio policy and allocation targets.
 - [Investment Research](skills/investment-research/SKILL.md): compare investment vehicles and costs, and apply sourced investor-style profiles.
